@@ -1,0 +1,191 @@
+---
+title: Installation
+description: Installation guide for our application.
+---
+
+Install lukio Cli and we will speed up the structured development process.
+## Installation Globally
+To start lukio-cli, you must install it locally or globally (recommendations), can be with NPM, PMPM, Yarn or Bun (recommendations).
+<Stepper>
+  <StepperItem title="Step 1: Install Bun if you haven't already (recommended)">
+    <Tabs defaultValue="mac-linux" className="pt-5 pb-1">
+      <TabsList>
+        <TabsTrigger value="mac-linux">Mac /  Linux</TabsTrigger>
+        <TabsTrigger value="windows">Windows</TabsTrigger>
+      </TabsList>
+      <TabsContent value="mac-linux">
+        ```bash
+        curl -fsSL https://bun.sh/install | bash
+        ```
+      </TabsContent>
+      <TabsContent value="windows">
+        ```bash
+        powershell -c "irm bun.sh/install.ps1 | iex"
+        ```
+      </TabsContent>
+    </Tabs>
+    Check your bun version to ensure it's installed correctly:
+    ```bash
+    bun --version
+    ```
+
+  </StepperItem>
+  
+
+  <StepperItem title="Step 2: Install lukio Cli Globally">
+    After installing Bun, you can install lukio Cli globally with the following command:
+    <Tabs defaultValue="bun" className="pt-5 pb-1">
+      <TabsList>
+        <TabsTrigger value="bun">bun</TabsTrigger>
+        <TabsTrigger value="npm">npm</TabsTrigger>
+        <TabsTrigger value="yarn">yarn</TabsTrigger>
+        <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+      </TabsList>
+      <TabsContent value="bun">
+        ```bash
+        bun add -g lukio-cli
+        ```
+      </TabsContent>
+      <TabsContent value="npm">
+        ```bash
+        npm install -g lukio-cli
+        ```
+      </TabsContent>
+      <TabsContent value="yarn">
+        ```bash
+        yarn global add lukio-cli
+        ```
+      </TabsContent>
+      <TabsContent value="pnpm">
+        ```bash
+        pnpm add -g lukio-cli
+        ```
+      </TabsContent>
+    </Tabs>
+    Check your lukio Cli version to ensure it's installed correctly:
+```bash
+// check your lukio version
+lukio --version
+lukio -v
+```
+  </StepperItem>
+
+  <StepperItem title="Step 3: lukio CLI Usage">
+    You can take advantage of the lukio-cli features with the following command:
+    <Note title="Remember">
+      If we have the last directory, then lukio-Cli has only 2 commands init and creation.
+    </Note>
+    
+    Create a new project with the following command:
+    ```bash
+    // write in your terminal
+    lukio create <project-name>
+    -------------
+    Would you like to install a starter kit? (Use arrow keys)
+    - [Monolith] - React | Next.js | Hono
+    - [Frontend] - React | Next.js
+    - [Backend] - Hono
+    ```
+    Initialize an existing project with the following command:
+    ```bash
+    // write in your terminal
+    lukio init
+    -------------
+    Select your project base framework? (Use arrow keys)
+    - [FS]-Next
+    - [FE]-Next
+    - [BE]-Hono
+    ```
+
+    System will be create new file **.lukio.yaml**, this is a standard configuration file for lukio-cli.
+  </StepperItem>
+</Stepper>
+
+## Installation Locally
+
+lukio can be installed in a local project, but this only applies to the existing project.
+
+
+<Stepper>
+  <StepperItem title="Step 1: Sign into Project Existing and Install">
+    ```
+    cd <project>
+    ```
+    Install lukio in Exsting Project
+    <Tabs defaultValue="bun" className="pt-5 pb-1">
+    <TabsList>
+        <TabsTrigger value="bun">bun</TabsTrigger>
+        <TabsTrigger value="npm">npm</TabsTrigger>
+        <TabsTrigger value="yarn">yarn</TabsTrigger>
+        <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+      </TabsList>
+      <TabsContent value="bun">
+        ```
+        bun add lukio-cli
+        ```
+      </TabsContent>
+      <TabsContent value="npm">
+        ```
+        npm install lukio-cli
+        ```
+      </TabsContent>
+      <TabsContent value="yarn">
+        ```
+        yarn add lukio-cli
+        ```
+      </TabsContent>
+      <TabsContent value="pnpm">
+        ```
+        pnpm add lukio-cli
+        ```
+      </TabsContent>
+    </Tabs>
+  </StepperItem>
+  <StepperItem title="Step 2: Initialization lukio cli">
+    ```
+    bunx lukio init
+    ```
+  </StepperItem>
+  <StepperItem title="Step 3: Select project type">
+    Initialize an existing project with the following command:
+    ```
+    // write in your terminal
+    bunx lukio init
+    -------------
+    Select your project base framework? (Use arrow keys)
+    - [FS]-Next
+    - [FE]-Next
+    - [BE]-Hono
+    ```
+  </StepperItem>
+   <StepperItem title="Step 4: Check lukio">
+    <Tabs defaultValue="bun" className="pt-5 pb-1">
+    <TabsList>
+        <TabsTrigger value="bun">bun</TabsTrigger>
+        <TabsTrigger value="npm">npm</TabsTrigger>
+        <TabsTrigger value="yarn">yarn</TabsTrigger>
+        <TabsTrigger value="pnpm">pnpm</TabsTrigger>
+      </TabsList>
+      <TabsContent value="bun">
+        ```
+        bunx lukio
+        ```
+      </TabsContent>
+      <TabsContent value="npm">
+        ```
+        npx lukio
+        ```
+      </TabsContent>
+      <TabsContent value="yarn">
+        ```
+        yarn lukio
+        ```
+      </TabsContent>
+      <TabsContent value="pnpm">
+        ```
+        pnpx lukio
+        ```
+      </TabsContent>
+    </Tabs>
+  </StepperItem>
+</Stepper>
