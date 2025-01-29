@@ -1,6 +1,6 @@
-import ScreenMain from '@/screens/main'
-import React from 'react'
+import ScreenMain from "@/screens/main";
+import React from "react";
 
-const Page = () => <ScreenMain />
+const Page = () => <ScreenMain />;
 
-export default Page
+export default Page;
