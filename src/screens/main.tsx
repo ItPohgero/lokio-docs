@@ -13,7 +13,7 @@ export default function ScreenMain() {
 				<Image src="/logo.png" width={300} height={300} alt="Aria Docs Logo" />
 			</div>
 			<h1 className="text-2xl font-bold mb-4 sm:text-4xl">
-				Like a lukio who help her child grow
+				Like a lokio who help her child grow
 			</h1>
 			<p className="mb-8 sm:text-lg max-w-[800px] text-muted-foreground">
 				This feature was created to help consistent and structured development
@@ -41,10 +41,10 @@ export default function ScreenMain() {
 			<div className="flex items-center bg-secondary px-2 py-1.5 rounded-lg flex-row sm:gap-2 gap-0.5 text-muted-foreground text-md mt-7 -mb-12 max-[800px]:mb-12 font-code sm:text-base text-sm font-medium">
 				<TerminalSquareIcon className="w-5 h-5 sm:mr-1 mt-0.5" />
 				<div className="flex justify-start items-center gap-x-2">
-					<span className="font-bold">npx lukio-cli</span>
+					<span className="font-bold">npx lokio-cli</span>
 					<span className="font-thin">{"<project-directory>"}</span>
 				</div>
-				<Copy content="npx lukio-cli <project-directory>" />
+				<Copy content="npx lokio-cli <project-directory>" />
 			</div>
 
 			<div className="lg:mt-20">

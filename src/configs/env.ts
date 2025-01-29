@@ -1,6 +1,6 @@
 export const ENV = {
-	NAME: "lukio",
-	URL: "https://lukiodev.org",
+	NAME: "lokio",
+	URL: "https://lokiodev.org",
 	DESCRIPTION:
-		"lukio is a personal blog and portfolio website of a software engineer.",
+		"lokio is a personal blog and portfolio website of a software engineer.",
 };

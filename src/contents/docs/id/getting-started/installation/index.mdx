@@ -3,9 +3,9 @@ title: Instal
 description: Panduan instalasi untuk aplikasi kami.
 ---
 
-Instal lukio Cli dan kami akan mempercepat proses pengembangan terstruktur.
+Instal lokio Cli dan kami akan mempercepat proses pengembangan terstruktur.
 ## Instalasi secara global
-Untuk memulai lukio-Cli, Anda harus menginstalnya secara lokal atau global (rekomendasi), dapat dengan NPM, PMPM, Benang atau Bun (Rekomendasi).
+Untuk memulai lokio-Cli, Anda harus menginstalnya secara lokal atau global (rekomendasi), dapat dengan NPM, PMPM, Benang atau Bun (Rekomendasi).
 <Stepper>
   <StepperItem title="Langkah 1: Instal Bun Jika Anda Belum (Disarankan)">
     <Tabs defaultValue="mac-linux" className="pt-5 pb-1">
@@ -32,8 +32,8 @@ Untuk memulai lukio-Cli, Anda harus menginstalnya secara lokal atau global (reko
   </StepperItem>
   
 
-  <StepperItem title="Langkah 2: Instal lukio Cli secara global">
-    Setelah menginstal BUN, Anda dapat menginstal lukio Cli secara global dengan perintah berikut:
+  <StepperItem title="Langkah 2: Instal lokio Cli secara global">
+    Setelah menginstal BUN, Anda dapat menginstal lokio Cli secara global dengan perintah berikut:
     <Tabs defaultValue="bun" className="pt-5 pb-1">
       <TabsList>
         <TabsTrigger value="bun">Bun</TabsTrigger>
@@ -43,41 +43,41 @@ Untuk memulai lukio-Cli, Anda harus menginstalnya secara lokal atau global (reko
       </TabsList>
       <TabsContent value="bun">
         ```
-        bun add -g lukio-cli
+        bun add -g lokio-cli
         ```
       </TabsContent>
       <TabsContent value="npm">
         ```
-        npm install -g lukio-cli
+        npm install -g lokio-cli
         ```
       </TabsContent>
       <TabsContent value="yarn">
         ```
-        yarn global add lukio-cli
+        yarn global add lokio-cli
         ```
       </TabsContent>
       <TabsContent value="pnpm">
         ```
-        pnpm add -g lukio-cli
+        pnpm add -g lokio-cli
         ```
       </TabsContent>
     </Tabs>
-    Periksa versi lukio CLI Anda untuk memastikannya diinstal dengan benar:
+    Periksa versi lokio CLI Anda untuk memastikannya diinstal dengan benar:
     ```
-    lukio --version
-    lukio -v
+    lokio --version
+    lokio -v
     ```
   </StepperItem>
 
-  <StepperItem title="Step 3: lukio CLI Usage">
-    Anda dapat memanfaatkan fitur lukio-cli dengan perintah berikut:
+  <StepperItem title="Step 3: lokio CLI Usage">
+    Anda dapat memanfaatkan fitur lokio-cli dengan perintah berikut:
     <Note title="Remember">
-      Jika kita memiliki direktori terakhir, maka lukio-Cli hanya memiliki 2 perintah init dan create.
+      Jika kita memiliki direktori terakhir, maka lokio-Cli hanya memiliki 2 perintah init dan create.
     </Note>
     
     Buat proyek baru dengan perintah berikut:
     ```
-    lukio create <project-name>
+    lokio create <project-name>
     -------------
     Would you like to install a starter kit? (Use arrow keys)
     - [FS]-Next
@@ -88,7 +88,7 @@ Untuk memulai lukio-Cli, Anda harus menginstalnya secara lokal atau global (reko
     ```
     Initialize an existing project with the following command:
     ```
-    lukio init
+    lokio init
     -------------
     Select your project base framework? (Use arrow keys)
     - [FS]-Next
@@ -98,6 +98,6 @@ Untuk memulai lukio-Cli, Anda harus menginstalnya secara lokal atau global (reko
     - [BE]-Hono
     ```
 
-    Sistem akan membuat file baru **. lukio.yaml **, ini adalah file konfigurasi standar untuk lukio-cli.
+    Sistem akan membuat file baru **. lokio.yaml **, ini adalah file konfigurasi standar untuk lokio-cli.
   </StepperItem>
 </Stepper>
