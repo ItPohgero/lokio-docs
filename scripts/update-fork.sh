@@ -5,7 +5,7 @@ set -e
 
 # Tambahkan remote upstream jika belum ada
 if ! git remote | grep -q "upstream"; then
-  git remote add upstream https://github.com/OWNER/REPO.git
+  git remote add upstream https://github.com/any-source/lokio-docs.git
   echo "Upstream remote added."
 fi
 
