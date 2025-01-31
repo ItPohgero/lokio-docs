@@ -1,3 +1,4 @@
+'use client';
 import ContributorProfile from "@/components/markdown/contributor-profile";
 import Copy from "@/components/markdown/copy";
 import { buttonVariants } from "@/components/ui/button";
@@ -9,16 +10,19 @@ import Link from "next/link";
 export default function ScreenMain() {
 	return (
 		<div className="flex sm:min-h-[85.5vh] min-h-[85vh] flex-col items-center justify-center text-center px-2 sm:py-8 py-12">
-			<div>
-				<Image src="/logo.png" width={300} height={300} alt="Aria Docs Logo" />
+			<div className="mb-4">
+				<div className="dark:hidden block">
+					<Image src="/logo-black.svg" width={200} height={200} alt="Logo" />
+				</div>
+				<div className="dark:block hidden">
+					<Image src="/logo-white.svg" width={200} height={200} alt="Logo" />
+				</div>
 			</div>
 			<h1 className="text-2xl font-bold mb-4 sm:text-4xl">
-				Like a lokio who help her child grow
+				Structuring Code, One Command at a Time
 			</h1>
 			<p className="mb-8 sm:text-lg max-w-[800px] text-muted-foreground">
-				This feature was created to help consistent and structured development
-				in website projects, several architectures are available for nextjs,
-				vue, angular
+				Lokio is an Assistant CLI that will help us in making projects that are more structured, fast and efficient.
 			</p>
 			<div className="flex flex-row items-center gap-5">
 				<Link
@@ -41,18 +45,9 @@ export default function ScreenMain() {
 			<div className="flex items-center bg-secondary px-2 py-1.5 rounded-lg flex-row sm:gap-2 gap-0.5 text-muted-foreground text-md mt-7 -mb-12 max-[800px]:mb-12 font-code sm:text-base text-sm font-medium">
 				<TerminalSquareIcon className="w-5 h-5 sm:mr-1 mt-0.5" />
 				<div className="flex justify-start items-center gap-x-2">
-					<span className="font-bold">npx lokio-cli</span>
-					<span className="font-thin">{"<project-directory>"}</span>
+					<span className="font-bold">bun add -g lokio</span>
 				</div>
-				<Copy content="npx lokio-cli <project-directory>" />
-			</div>
-
-			<div className="lg:mt-20">
-				<p className="mb-2 text-xs text-muted-foreground">Thanks to :</p>
-				<div className="flex justify-start gap-x-2">
-					<ContributorProfile username="itpohgero" />
-					<ContributorProfile username="mataramandev" />
-				</div>
+				<Copy content="bun add -g lokio" />
 			</div>
 		</div>
 	);

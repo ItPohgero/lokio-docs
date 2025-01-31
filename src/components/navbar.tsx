@@ -8,6 +8,7 @@ import Anchor from "./anchor";
 import { SheetLeftbar } from "./leftbar";
 import Search from "./search";
 import { buttonVariants } from "./ui/button";
+import Image from "next/image";
 
 export const NAVLINKS = [
 	{
@@ -58,7 +59,7 @@ export function Navbar() {
 export function Logo() {
 	return (
 		<Link href="/" className="flex items-center gap-2.5">
-			<Icon icon="academicons:overleaf" className="w-6 h-6 text-green-600" />
+			<Image src="/logo.png" width={20} height={20} alt="Logo" />
 			<h2 className="text-md font-bold">{ENV.NAME}</h2>
 		</Link>
 	);
