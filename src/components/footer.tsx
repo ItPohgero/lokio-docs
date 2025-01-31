@@ -1,4 +1,4 @@
-import { CommandIcon, HeartIcon } from "lucide-react";
+import { HeartIcon } from "lucide-react";
 import Link from "next/link";
 import { buttonVariants } from "./ui/button";
 import Image from "next/image";

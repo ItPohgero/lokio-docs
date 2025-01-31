@@ -1,5 +1,4 @@
 'use client';
-import ContributorProfile from "@/components/markdown/contributor-profile";
 import Copy from "@/components/markdown/copy";
 import { buttonVariants } from "@/components/ui/button";
 import { page_routes } from "@/lib/routes-config";
