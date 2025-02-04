@@ -3,7 +3,7 @@
 set -e  # Hentikan eksekusi jika ada error
 
 # URL unduhan
-URL="https://github.com/any-source/lokio/releases/download/latest/mac"
+URL="https://github.com/any-source/lokio/releases/download/latest/linux"
 BINARY_NAME="lokio"
 INSTALL_DIR="$HOME/.local/bin"
 
