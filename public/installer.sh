@@ -30,10 +30,13 @@ mv "$BINARY_NAME" "$INSTALL_DIR/"
 # Tambahkan ~/.local/bin ke PATH jika belum ada
 if [[ ":$PATH:" != *":$INSTALL_DIR:"* ]]; then
     echo "🔧 Menambahkan $INSTALL_DIR ke PATH..."
-    echo "export PATH=\"$INSTALL_DIR:\$PATH\"" >> "$HOME/.bashrc"
-    echo "export PATH=\"$INSTALL_DIR:\$PATH\"" >> "$HOME/.zshrc"
-    source "$HOME/.bashrc"
-    source "$HOME/.zshrc"
+    if [[ "$SHELL" == *"zsh"* ]]; then
+        echo "export PATH=\"$INSTALL_DIR:\$PATH\"" >> "$HOME/.zshrc"
+        source "$HOME/.zshrc"
+    else
+        echo "export PATH=\"$INSTALL_DIR:\$PATH\"" >> "$HOME/.bashrc"
+        source "$HOME/.bashrc"
+    fi
 fi
 
 # Verifikasi instalasi
