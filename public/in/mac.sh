@@ -9,7 +9,7 @@ INSTALL_DIR="$HOME/.local/bin"
 
 # Pesan selamat datang
 echo "============================================="
-echo " Selamat datang di Instalasi $BINARY_NAME! "
+echo "$BINARY_NAME! Assistant"
 echo "============================================="
 echo ""
 
@@ -17,7 +17,6 @@ echo ""
 mkdir -p "$INSTALL_DIR"
 
 # Unduh file
-echo "🔄 Mengunduh $BINARY_NAME dari $URL..."
 curl -L -o "$BINARY_NAME" "$URL"
 
 # Beri izin eksekusi
@@ -41,15 +40,15 @@ fi
 
 # Verifikasi instalasi
 if command -v $BINARY_NAME &> /dev/null; then
-    echo "🎉 $BINARY_NAME berhasil diinstal!"
-    echo "🛠️  Menjalankan $BINARY_NAME --help untuk melihat opsi yang tersedia..."
-    $BINARY_NAME --help || echo "ℹ️  Tidak ada output bantuan."
+    echo "🎉 $BINARY_NAME Intall successfully!"
+    echo "🛠️  Run $BINARY_NAME to show command line"
+    $BINARY_NAME
 else
-    echo "❌ Gagal menginstal $BINARY_NAME. Silakan coba lagi atau hubungi dukungan."
+    echo "❌ Failed to install $BINARY_NAME."
     exit 1
 fi
 
 echo ""
 echo "============================================="
-echo " Terima kasih telah menggunakan $BINARY_NAME! "
+echo " Tahnks for using $BINARY_NAME! "
 echo "============================================="
