@@ -42,7 +42,7 @@ export function Navbar() {
 						<Search />
 						<div className="flex ml-2.5 sm:ml-0">
 							<Link
-								href="https://github.com/nisabmohd/NexDocs"
+								href="https://github.com/any-source/lokio"
 								className={buttonVariants({ variant: "ghost", size: "icon" })}
 							>
 								<Icon icon="akar-icons:github-fill" />
