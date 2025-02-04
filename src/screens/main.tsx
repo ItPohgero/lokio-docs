@@ -1,10 +1,8 @@
 'use client';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { buttonVariants } from "@/components/ui/button";
-import { TerminalSquareIcon, ArrowRight, ChevronDown } from "lucide-react";
+import { TerminalSquareIcon } from "lucide-react";
 import Image from "next/image";
-import Link from "next/link";
 import { Icon } from '@iconify/react';
 import { ModuleFeatures } from './modules/features';
 import { ModuleTestimoni } from './modules/testimoni';

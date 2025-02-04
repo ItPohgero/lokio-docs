@@ -86,7 +86,7 @@ export function ModuleTestimoni() {
                             </div>
                             
                             <p className="text-lg text-muted-foreground italic mb-6 h-24 overflow-hidden">
-                                "{testimonial.comment}"
+                                &quot;{testimonial.comment}&quot;
                             </p>
                             
                             <div className="border-t border-secondary/20 pt-4">

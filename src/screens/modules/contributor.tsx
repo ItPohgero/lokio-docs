@@ -3,6 +3,7 @@ import { Suspense, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Icon } from '@iconify/react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 
 interface Contributor {
@@ -81,9 +82,11 @@ export const ModuleContributors: React.FC = () => {
                                     hover:shadow-2xl hover:scale-105 cursor-pointer"
                                 >
                                     <div className="aspect-square overflow-hidden">
-                                        <img
+                                        <Image
                                             src={contributor.avatar}
                                             alt={contributor.name}
+                                            width={20}
+                                            height={20}
                                             className="w-full h-full object-cover transition-transform 
                                             duration-300 group-hover:scale-110"
                                         />

@@ -33,6 +33,7 @@ export async function GET() {
 
         return NextResponse.json(formattedContributors)
     } catch (error) {
+        console.log(error);
         return NextResponse.json({ error: 'Failed to fetch contributors' }, { status: 500 })
     }
 }
