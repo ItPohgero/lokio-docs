@@ -4,6 +4,12 @@ import { motion } from 'framer-motion';
 import { Icon } from '@iconify/react';
 import Link from 'next/link';
 import Image from 'next/image';
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 
 interface Contributor {
@@ -77,52 +83,59 @@ export const ModuleContributors: React.FC = () => {
                                 transition={{ duration: 0.5 }}
                                 className="relative group w-20 lg:w-32 h-20 lg:h-32 aspect-square"
                             >
-                                <div
-                                    className="relative overflow-hidden rounded-xl shadow-lg transition-all duration-300 
+                                <TooltipProvider>
+                                    <Tooltip>
+                                        <TooltipTrigger>
+                                            <div
+                                                className="relative overflow-hidden rounded-full shadow-lg transition-all duration-300 
                                     hover:shadow-2xl hover:scale-105 cursor-pointer"
-                                >
-                                    <div className="aspect-square overflow-hidden">
-                                        <Image
-                                            src={contributor.avatar}
-                                            alt={contributor.name}
-                                            width={20}
-                                            height={20}
-                                            className="w-full h-full object-cover transition-transform 
-                                            duration-300 group-hover:scale-110"
-                                        />
-                                    </div>
-
-                                    <div className={`
-                                    absolute inset-0 bg-black/50 
-                                    flex flex-col justify-end p-4 text-white
-                                    opacity-0 group-hover:opacity-100 
-                                    transition-opacity duration-300
-                                `}>
-                                        <div className="font-bold truncate mt-2">{contributor.name}</div>
-                                        <div className="text-sm truncate">
-                                            {contributor.contribution} Contributions
-                                        </div>
-                                        <div className="text-xs mt-1 text-secondary-foreground">
-                                            {getContributionLevel(contributor.contribution)}
-                                        </div>
-                                        {contributor.link && (
-                                            <Link
-                                                href={contributor.link}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="absolute top-4 right-4 text-white hover:text-primary"
                                             >
-                                                <Icon icon="mdi:github" className="w-6 h-6" />
-                                            </Link>
-                                        )}
-                                    </div>
-                                </div>
+                                                <div className="aspect-square overflow-hidden">
+                                                    <Image
+                                                        src={contributor.avatar}
+                                                        alt={contributor.name}
+                                                        width={20}
+                                                        height={20}
+                                                        sizes='400px'
+                                                        className="w-full h-full object-cover transition-transform 
+                                            duration-300 group-hover:scale-110"
+                                                    />
+                                                </div>
+                                            </div>
+                                        </TooltipTrigger>
+                                        <TooltipContent>
+                                            <div className='w-32'>
+                                                <div className='flex justify-start items-center gap-x-2'>
+                                                    {contributor.link && (
+                                                        <Link
+                                                            href={contributor.link}
+                                                            target="_blank"
+                                                            rel="noopener noreferrer"
+                                                            className="text-white hover:text-primary"
+                                                        >
+                                                            <Icon icon="mdi:github" className="w-6 h-6" />
+                                                        </Link>
+                                                    )}
+                                                    <div className="font-bold truncate mt-2">{contributor.name}</div>
+                                                </div>
+                                                <div>
+                                                    <div className="text-sm truncate mt-2">
+                                                        {contributor.contribution} Contributions
+                                                    </div>
+                                                    <div className="text-xs text-secondary-foreground">
+                                                        {getContributionLevel(contributor.contribution)}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </TooltipContent>
+                                    </Tooltip>
+                                </TooltipProvider>
                             </motion.div>
                         ))}
                     </div>
                 </div>
             </section>
-        </Suspense>
+        </Suspense >
     );
 };
 

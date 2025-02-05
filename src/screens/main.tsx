@@ -8,6 +8,7 @@ import { ModuleFeatures } from './modules/features';
 import { ModuleTestimoni } from './modules/testimoni';
 import { ModuleCallToAction } from './modules/call-to-action';
 import ModuleContributors from './modules/contributor';
+import { ModuleFooter } from './modules/footer';
 
 export default function ScreenMain() {
 	const [activeTab, setActiveTab] = useState<'mac' | 'linux' | 'windows'>('mac');
@@ -123,6 +124,7 @@ export default function ScreenMain() {
 			<ModuleFeatures/>
 			<ModuleTestimoni/>
 			<ModuleContributors/>
+			<ModuleFooter/>
 		</div>
 	);
 }

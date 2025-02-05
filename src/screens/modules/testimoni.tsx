@@ -47,7 +47,7 @@ export function ModuleTestimoni() {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
+                    transition={{ duration: 1 }}
                     className="text-center space-y-8 mb-16"
                 >
                     <h2 className="text-4xl font-bold tracking-tight">
@@ -65,7 +65,7 @@ export function ModuleTestimoni() {
                             initial={{ opacity: 0, y: 50 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ 
-                                duration: 0.6, 
+                                duration: 1, 
                                 delay: index * 0.2 
                             }}
                             className="bg-background rounded-3xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 group"

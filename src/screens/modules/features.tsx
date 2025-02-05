@@ -26,7 +26,7 @@ export function ModuleFeatures() {
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
+                    transition={{ duration: 1 }}
                     className="text-center space-y-8"
                 >
                                     <h2 className="text-4xl font-bold tracking-tight">
@@ -44,7 +44,7 @@ export function ModuleFeatures() {
                             key={title}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: index * 0.2 }}
+                            transition={{ duration: 1, delay: index * 0.2 }}
                             className="bg-secondary/20 p-8 rounded-2xl hover:shadow-lg transition-all duration-300"
                         >
                             <div className="flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full">

@@ -25,8 +25,9 @@ export function ModuleCallToAction() {
                         <Link
                             href={`/docs${page_routes[0].href}`}
                             className={buttonVariants({
+                                variant: "destructive",
                                 size: "lg",
-                                className: "group bg-orange-400"
+                                className: "group bg-orange-700"
                             })}
                         >
                             Docs
