@@ -45,7 +45,7 @@ export function ModuleFeatures() {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 1, delay: index * 0.2 }}
-                            className="bg-secondary/20 p-8 rounded-2xl hover:shadow-lg transition-all duration-300"
+                            className="bg-secondary/20 p-8 rounded-2xl hover:shadow-lg"
                         >
                             <div className="flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full">
                                 <Icon icon={icon} className="w-8 h-8 text-primary" />

@@ -68,7 +68,7 @@ export function ModuleTestimoni() {
                                 duration: 1, 
                                 delay: index * 0.2 
                             }}
-                            className="bg-background rounded-3xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 group"
+                            className="bg-background rounded-3xl shadow-lg p-8 hover:shadow-2xl group"
                         >
                             <div className="flex items-center justify-between mb-6">
                                 <div className="w-16 h-16 rounded-full overflow-hidden border-4 border-primary/30 group-hover:border-primary/50 transition-all">
