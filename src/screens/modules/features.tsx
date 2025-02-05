@@ -9,7 +9,7 @@ const features = [
     },
     {
         icon: 'carbon:settings',
-        title: 'Customizable Templates',
+        title: 'Pre-Built Templates',
         description: 'Use pre-built templates or create your own to speed up project setup.',
     },
     {

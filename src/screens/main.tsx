@@ -124,7 +124,7 @@ export default function ScreenMain() {
 			</div>
 			<ModuleCallToAction />
 			<ModuleFeatures />
-			<ModuleTestimoni />
+			{/* <ModuleTestimoni /> */}
 			<ModuleContributors />
 			<ModuleFooter />
 		</div>

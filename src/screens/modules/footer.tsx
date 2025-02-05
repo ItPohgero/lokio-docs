@@ -28,10 +28,8 @@ export function ModuleFooter() {
                         <h3 className="text-lg font-semibold">Quick Links</h3>
                         <ul className="space-y-2">
                             {[
-                                { label: 'Home', link: '#' },
-                                { label: 'Features', link: '#' },
-                                { label: 'Pricing', link: '#' },
-                                { label: 'Contact', link: '#' },
+                                { label: 'Home', link: '/' },
+                                { label: 'About', link: 'https://itpohgero.com' },
                             ].map((item, index) => (
                                 <li key={index?.toString()}>
                                     <Link
@@ -74,7 +72,10 @@ export function ModuleFooter() {
                             Thank you for helping to develop
                         </p>
 
-                        <Image src="/logo/mataramandev.svg" alt="mataramandev" width={40} height={40} />
+                        <div className='flex flex-wrap justify-start items-center gap-2'>
+                            <Image src="/logo/akt.svg" alt="akt" width={70} height={70} />
+                            <Image src="/logo/mataramandev.svg" alt="mataramandev" width={40} height={40} />
+                        </div>
                     </motion.div>
                 </div>
                 <motion.div
