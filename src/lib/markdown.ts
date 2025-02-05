@@ -86,7 +86,9 @@ const components = {
 	table: CustomTable,
 	tr: CustomTableRow,
 	CodeStructure,
-	CodeStructureLokio
+	CodeStructureLokio,
+	CodeStructureLokioDocs,
+	CodeStructureLokioExamples,
 };
 
 // can be used for other pages like blogs, Guides etc
@@ -222,6 +224,8 @@ export async function getAllChilds(pathString: string) {
 import type { Node } from "unist";
 import CodeStructure from "@/components/markdown/code-structure";
 import CodeStructureLokio from "@/components/markdown/code-structure-lokio";
+import CodeStructureLokioDocs from "@/components/markdown/code-structure-docs";
+import CodeStructureLokioExamples from "@/components/markdown/code-structure-examples";
 
 const preProcess = () => (tree: Node) => {
 	visit(tree, (node) => {
