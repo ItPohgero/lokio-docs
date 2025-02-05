@@ -12,18 +12,18 @@ interface FolderContent {
     [key: string]: GitHubItem[];
 }
 
-const CodeStructure = ({ structure = "next-monolith" }: { structure: string }) => {
+const CodeStructureLokio = () => {
     const [data, setData] = useState<GitHubItem[] | null>(null);
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(true);
-    const [expandedFolders, setExpandedFolders] = useState(new Set([structure]));
+    const [expandedFolders, setExpandedFolders] = useState(new Set(['']));
     const [folderContents, setFolderContents] = useState<FolderContent>({});
     const [loadingFolders, setLoadingFolders] = useState<Set<string>>(new Set());
 
     const fetchGitHubContent = useCallback(async (path: string) => {
         try {
             const response = await fetch(
-                `https://api.github.com/repos/any-source/examples/contents/${path}`
+                `https://api.github.com/repos/any-source/lokio/contents/${path}`
             );
             if (!response.ok) {
                 throw new Error('Failed to fetch repository data');
@@ -38,17 +38,11 @@ const CodeStructure = ({ structure = "next-monolith" }: { structure: string }) =
         }
     }, []);
 
-    // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
     useEffect(() => {
         const fetchInitialContent = async () => {
             try {
-                const result = await fetchGitHubContent(`code/${structure}`);
-                const manualRootFile: GitHubItem = {
-                    type: 'file',
-                    path: '.lokio.yaml',
-                    name: '.lokio.yaml'
-                };
-                setData([manualRootFile, ...result]);
+                const result = await fetchGitHubContent('');
+                setData(result);
             } catch (err) {
                 if (err instanceof Error) {
                     setError(err.message);
@@ -61,7 +55,7 @@ const CodeStructure = ({ structure = "next-monolith" }: { structure: string }) =
         };
 
         fetchInitialContent();
-    }, [structure]);
+    }, [fetchGitHubContent]);
 
     const toggleFolder = async (path: string, isFolder: boolean) => {
         if (!isFolder) return;
@@ -145,7 +139,9 @@ const CodeStructure = ({ structure = "next-monolith" }: { structure: string }) =
                     ) : (
                         <File size={16} className="text-gray-500 mr-2" />
                     )}
-                    <span className={`text-sm ${item.name === ".lokio.yaml" ? "text-primary" : ""}`}>{item.name}</span>
+                    <span className="text-sm">
+                        {item.name}
+                    </span>
                 </div>
                 {isFolder && isExpanded && folderContent && (
                     <div>
@@ -175,16 +171,10 @@ const CodeStructure = ({ structure = "next-monolith" }: { structure: string }) =
     }
 
     return (
-        <div className="w-full max-w-2xl border rounded-lg shadow-sm my-10">
-            <div className="p-4 border-b">
-                <div className="text-lg font-semibold">Repository Structure</div>
-                <div className="text-sm">{structure}</div>
-            </div>
-            <div className="p-2">
-                {data && sortItems(data).map((item: GitHubItem) => renderItem(item))}
-            </div>
+        <div className="w-full">
+            {data && sortItems(data).map((item: GitHubItem) => renderItem(item))}
         </div>
     );
 };
 
-export default CodeStructure;
+export default CodeStructureLokio;
