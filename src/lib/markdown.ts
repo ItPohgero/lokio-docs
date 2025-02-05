@@ -85,6 +85,7 @@ const components = {
 	ContributorProfile,
 	table: CustomTable,
 	tr: CustomTableRow,
+	CodeStructure
 };
 
 // can be used for other pages like blogs, Guides etc
@@ -218,6 +219,7 @@ export async function getAllChilds(pathString: string) {
 }
 
 import type { Node } from "unist";
+import CodeStructure from "@/components/markdown/code-structure";
 
 const preProcess = () => (tree: Node) => {
 	visit(tree, (node) => {
