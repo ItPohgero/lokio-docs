@@ -29,7 +29,7 @@ export default function ScreenMain() {
 
 	return (
 		<div className="min-h-screen">
-			<div className="container mx-auto px-4 pt-32">
+			<div className="container mx-auto pt-32 px-0">
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 					<motion.div
 						initial={{ opacity: 0, y: 20 }}

@@ -59,7 +59,7 @@ export const ModuleContributors: React.FC = () => {
     return (
         <Suspense fallback={<div>Loading contributors...</div>}>
             <section className="bg-gradient-to-b from-secondary/5 to-secondary/10 py-16">
-                <div className="container mx-auto px-4">
+                <div className="container mx-auto px-0">
                     <motion.div
                         initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 1, y: 0 }}

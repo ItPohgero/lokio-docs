@@ -6,7 +6,7 @@ import Image from 'next/image';
 export function ModuleFooter() {
     return (
         <footer className="bg-background border-t border-secondary/20">
-            <div className="container mx-auto px-4 py-12">
+            <div className="container mx-auto px-0 py-12">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
