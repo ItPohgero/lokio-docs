@@ -1,14 +1,13 @@
 import { motion } from 'framer-motion';
 import { Icon } from '@iconify/react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export function ModuleFooter() {
     return (
         <footer className="bg-background border-t border-secondary/20">
             <div className="container mx-auto px-4 py-12">
-                {/* Grid Layout */}
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-                    {/* Bagian 1: Logo dan Deskripsi */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -19,28 +18,7 @@ export function ModuleFooter() {
                         <p className="text-muted-foreground">
                             Lokio is a modern development tool designed to make your workflow faster, smoother, and more efficient.
                         </p>
-                        {/* Ikon Media Sosial */}
-                        <div className="flex space-x-4">
-                            {[
-                                { icon: 'ri:facebook-fill', link: '#' },
-                                { icon: 'ri:twitter-x-fill', link: '#' },
-                                { icon: 'ri:instagram-fill', link: '#' },
-                                { icon: 'ri:linkedin-fill', link: '#' },
-                            ].map((social, index) => (
-                                <Link
-                                    key={index?.toString()}
-                                    href={social.link}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="text-muted-foreground hover:text-primary transition-colors"
-                                >
-                                    <Icon icon={social.icon} className="w-6 h-6" />
-                                </Link>
-                            ))}
-                        </div>
                     </motion.div>
-
-                    {/* Bagian 2: Tautan Cepat */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -66,8 +44,6 @@ export function ModuleFooter() {
                             ))}
                         </ul>
                     </motion.div>
-
-                    {/* Bagian 3: Kontak */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -78,47 +54,29 @@ export function ModuleFooter() {
                         <ul className="space-y-2">
                             <li className="text-muted-foreground flex items-center space-x-2">
                                 <Icon icon="ri:map-pin-line" className="w-5 h-5" />
-                                <span>123 Main Street, City, Country</span>
+                                <span>Ponorogo, East Java, Indonesia</span>
                             </li>
                             <li className="text-muted-foreground flex items-center space-x-2">
                                 <Icon icon="ri:mail-line" className="w-5 h-5" />
-                                <span>support@lokio.com</span>
-                            </li>
-                            <li className="text-muted-foreground flex items-center space-x-2">
-                                <Icon icon="ri:phone-line" className="w-5 h-5" />
-                                <span>+1 (123) 456-7890</span>
+                                <span>support@lokio.dev</span>
                             </li>
                         </ul>
                     </motion.div>
 
-                    {/* Bagian 4: Newsletter */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.6 }}
                         className="space-y-4"
                     >
-                        <h3 className="text-lg font-semibold">Subscribe to Our Newsletter</h3>
+                        <h3 className="text-lg font-semibold">Supported</h3>
                         <p className="text-muted-foreground">
-                            Get the latest updates and news directly in your inbox.
+                            Thank you for helping to develop
                         </p>
-                        <form className="flex space-x-2">
-                            <input
-                                type="email"
-                                placeholder="Your email"
-                                className="w-full px-4 py-2 rounded-lg border border-secondary/20 focus:outline-none focus:border-primary"
-                            />
-                            <button
-                                type="submit"
-                                className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
-                            >
-                                Subscribe
-                            </button>
-                        </form>
+
+                        <Image src="/logo/mataramandev.svg" alt="mataramandev" width={40} height={40} />
                     </motion.div>
                 </div>
-
-                {/* Bagian Copyright */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}

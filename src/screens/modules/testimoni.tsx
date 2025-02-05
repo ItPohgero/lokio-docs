@@ -48,12 +48,12 @@ export function ModuleTestimoni() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}
-                    className="text-center space-y-8 mb-16"
+                    className="text-center mb-12"
                 >
-                    <h2 className="text-4xl font-bold tracking-tight">
+                    <h2 className="text-3xl lg:text-4xl  font-bold tracking-tight mb-4">
                         Trusted by <span className="text-primary">Innovators</span>
                     </h2>
-                    <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                    <p className="lg:text-xl text-muted-foreground max-w-2xl mx-auto">
                         Real stories from teams transforming their workflows
                     </p>
                 </motion.div>
@@ -85,11 +85,11 @@ export function ModuleTestimoni() {
                                 </div>
                             </div>
                             
-                            <p className="text-lg text-muted-foreground italic mb-6 h-24 overflow-hidden">
+                            <p className="lg:text-lg text-muted-foreground italic mb-6 overflow-hidden line-clamp-2">
                                 &quot;{testimonial.comment}&quot;
                             </p>
                             
-                            <div className="border-t border-secondary/20 pt-4">
+                            <div className="border-t border-secondary/20">
                                 <h3 className="text-xl font-bold">{testimonial.name}</h3>
                                 <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                                     <span>{testimonial.role}</span>

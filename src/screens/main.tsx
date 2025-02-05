@@ -1,7 +1,6 @@
 'use client';
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { TerminalSquareIcon } from "lucide-react";
 import Image from "next/image";
 import { Icon } from '@iconify/react';
 import { ModuleFeatures } from './modules/features';
@@ -54,7 +53,7 @@ export default function ScreenMain() {
 									One Command at a Time
 								</span>
 							</h1>
-							<p className="text-xl text-muted-foreground max-w-2xl">
+							<p className="lg:text-xl text-muted-foreground max-w-2xl">
 								Lokio is an Assistant CLI that helps create more structured, fast, and efficient projects.
 							</p>
 						</div>
@@ -76,15 +75,15 @@ export default function ScreenMain() {
 								))}
 							</div>
 
-							<div className="relative group">
-								<div className="w-full bg-secondary rounded-lg p-4 font-mono text-sm lg:text-base overflow-x-auto">
+							<div className="relative group w-max">
+								<div className="w-max bg-secondary rounded-lg p-4 font-mono text-xs lg:text-base overflow-x-auto pr-16">
 									<code>{installCommands[activeTab]}</code>
 									<button
 										type='button'
 										onClick={() => navigator.clipboard.writeText(installCommands[activeTab])}
 										className="absolute right-2 top-2 p-2 rounded-md hover:bg-primary/10"
 									>
-										<TerminalSquareIcon className="w-5 h-5" />
+										<Icon icon="mdi:content-copy" className="w-5 h-5" />
 									</button>
 								</div>
 							</div>
@@ -97,7 +96,7 @@ export default function ScreenMain() {
 						transition={{ duration: 0.6, delay: 0.2 }}
 						className="space-y-8"
 					>
-						<div className="flex flex-wrap justify-center gap-6">
+						<div className="flex flex-wrap justify-center gap-2 lg:gap-6">
 							{logos.map(({ icon, name }, index) => (
 								<motion.div
 									key={name}
@@ -106,11 +105,11 @@ export default function ScreenMain() {
 									transition={{ duration: 0.4, delay: index * 0.1 }}
 									className="group relative mt-2"
 								>
-									<div className="w-20 lg:w-24 h-20 lg:h-24 flex items-center justify-center rounded-2xl bg-secondary/50 backdrop-blur-sm 
+									<div className="w-16 lg:w-24 h-16 lg:h-24 flex items-center justify-center rounded-2xl bg-secondary/50 backdrop-blur-sm 
                                 hover:bg-secondary transition-all duration-300 hover:shadow-lg hover:scale-105">
 										<Icon icon={icon} className="w-12 h-12" />
 									</div>
-									<span className="absolute -bottom-6 left-1/2 -translate-x-1/2 text-sm opacity-0 group-hover:opacity-100 
+									<span className="absolute -bottom-7 left-1/2 -translate-x-1/2 text-sm opacity-0 group-hover:opacity-100 
                                 transition-all duration-300 whitespace-nowrap">
 										{name}
 									</span>

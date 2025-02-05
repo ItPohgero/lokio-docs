@@ -27,13 +27,13 @@ export function ModuleFeatures() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}
-                    className="text-center space-y-8"
+                    className="text-center mb-12"
                 >
-                                    <h2 className="text-4xl font-bold tracking-tight">
-                                    Powerful <span className="text-primary">Features</span>
+                    <h2 className="text-3xl lg:text-4xl  font-bold tracking-tight mb-4">
+                    Powerful <span className="text-primary">Features</span>
 
                     </h2>
-                    <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+                    <p className="lg:text-xl text-muted-foreground max-w-2xl mx-auto">
                         Lokio comes packed with features designed to make your development process smoother and more efficient.
                     </p>
                 </motion.div>
