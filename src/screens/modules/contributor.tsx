@@ -106,17 +106,15 @@ export const ModuleContributors: React.FC = () => {
                                         <TooltipContent>
                                             <div className='w-32'>
                                                 <div className='flex justify-start items-center gap-x-2'>
-                                                    {contributor.link && (
-                                                        <Link
-                                                            href={contributor.link}
-                                                            target="_blank"
-                                                            rel="noopener noreferrer"
-                                                            className="text-white hover:text-primary"
-                                                        >
-                                                            <Icon icon="mdi:github" className="w-6 h-6" />
-                                                        </Link>
-                                                    )}
-                                                    <div className="font-bold truncate mt-2">{contributor.name}</div>
+                                                    <Link
+                                                        href={contributor.link || '#'}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                        className='flex justify-start items-center gap-x-2'
+                                                    >
+                                                        <Icon icon="mdi:github" className="w-6 h-6" />
+                                                        <div className="font-bold w-20 truncate">{contributor.name}</div>
+                                                    </Link>
                                                 </div>
                                                 <div>
                                                     <div className="text-sm truncate mt-2">
