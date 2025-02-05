@@ -12,15 +12,15 @@ export function ModuleCallToAction() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    className="text-center lg:text-start"
+                    className="text-start"
                 >
                     <h2 className="text-xl lg:text-3xl font-bold tracking-tight mb-4">
                         Ready to Transform Your Workflow?
                     </h2>
-                    <p className="lg:text-xl text-muted-foreground max-w-2xl  text-center lg:text-start">
+                    <p className="lg:text-xl text-muted-foreground max-w-2xl">
                         Join thousands of developers who are already using Lokio to structure their code and boost productivity.
                     </p>
-                    <div className="flex lg:justify-start justify-center gap-4 mt-4">
+                    <div className="flex justify-start gap-4 mt-4">
                         
                         <Link
                             href={`/docs${page_routes[0].href}`}

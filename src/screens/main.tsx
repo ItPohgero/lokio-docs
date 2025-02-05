@@ -37,7 +37,7 @@ export default function ScreenMain() {
 						transition={{ duration: 0.6 }}
 						className="space-y-8"
 					>
-						<div className="flex justify-center lg:justify-start">
+						<div className="flex justify-start">
 							<div className="dark:hidden block">
 								<Image src="/logo-black.svg" width={200} height={200} alt="Logo" />
 							</div>
@@ -46,7 +46,7 @@ export default function ScreenMain() {
 							</div>
 						</div>
 
-						<div className="space-y-4 text-center lg:text-left">
+						<div className="space-y-4 text-left">
 							<h1 className="text-4xl lg:text-6xl font-bold tracking-tight">
 								Structuring Code,{" "}
 								<span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
@@ -59,15 +59,15 @@ export default function ScreenMain() {
 						</div>
 
 						<div className="flex flex-col space-y-4">
-							<div className="flex flex-wrap gap-2 justify-center lg:justify-start">
+							<div className="flex flex-wrap gap-2 justify-start">
 								{Object.keys(installCommands).map((platform) => (
 									<button
-										type='button'
+										type="button"
 										key={platform}
-										onClick={() => setActiveTab(platform as 'mac' | 'linux' | 'windows')}
+										onClick={() => setActiveTab(platform as "mac" | "linux" | "windows")}
 										className={`px-4 py-2 rounded-lg transition-colors ${activeTab === platform
-											? 'bg-primary text-primary-foreground'
-											: 'bg-secondary hover:bg-secondary/80'
+												? "bg-primary text-primary-foreground"
+												: "bg-secondary hover:bg-secondary/80"
 											}`}
 									>
 										{platform.charAt(0).toUpperCase() + platform.slice(1)}
@@ -75,17 +75,20 @@ export default function ScreenMain() {
 								))}
 							</div>
 
-							<div className="relative group w-max">
-								<div className="w-max bg-secondary rounded-lg p-4 font-mono text-xs lg:text-base overflow-x-auto pr-16">
+							<div className="relative group w-full max-w-full overflow-hidden">
+								<div
+									className="w-full bg-secondary rounded-lg p-4 font-mono text-xs lg:text-base overflow-x-auto"
+									style={{ whiteSpace: "nowrap" }} // Memastikan teks tidak wrap
+								>
 									<code>{installCommands[activeTab]}</code>
-									<button
-										type='button'
-										onClick={() => navigator.clipboard.writeText(installCommands[activeTab])}
-										className="absolute right-2 top-2 p-2 rounded-md hover:bg-primary/10"
-									>
-										<Icon icon="mdi:content-copy" className="w-5 h-5" />
-									</button>
 								</div>
+								<button
+									type="button"
+									onClick={() => navigator.clipboard.writeText(installCommands[activeTab])}
+									className="absolute right-2 top-2 p-2 rounded-md hover:bg-primary/10 hidden lg:block"
+								>
+									<Icon icon="mdi:content-copy" className="w-5 h-5" />
+								</button>
 							</div>
 						</div>
 					</motion.div>
@@ -119,11 +122,11 @@ export default function ScreenMain() {
 					</motion.div>
 				</div>
 			</div>
-			<ModuleCallToAction/>
-			<ModuleFeatures/>
-			<ModuleTestimoni/>
-			<ModuleContributors/>
-			<ModuleFooter/>
+			<ModuleCallToAction />
+			<ModuleFeatures />
+			<ModuleTestimoni />
+			<ModuleContributors />
+			<ModuleFooter />
 		</div>
 	);
 }
