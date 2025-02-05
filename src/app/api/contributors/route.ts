@@ -15,8 +15,12 @@ export async function GET() {
             owner: 'any-source',
             repo: 'examples'
         })
+        const contributors_docs = await octokit.repos.listContributors({
+            owner: 'any-source',
+            repo: 'lokio-docs'
+        })
 
-        const formattedContributors = [...contributors.data, ...contributors_examples.data]
+        const formattedContributors = [...contributors.data, ...contributors_examples.data, ...contributors_docs.data]
             .reduce((unique: typeof contributors.data, contributor) => {
                 const exists = unique.find(item => item.login === contributor.login);
                 if (!exists) {
@@ -33,7 +37,7 @@ export async function GET() {
 
         return NextResponse.json(formattedContributors)
     } catch (error) {
-        console.log(error);
+        console.error(error);
         return NextResponse.json({ error: 'Failed to fetch contributors' }, { status: 500 })
     }
 }

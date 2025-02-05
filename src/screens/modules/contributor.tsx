@@ -19,13 +19,6 @@ interface Contributor {
     link?: string;
 }
 
-interface Contributor {
-    name: string;
-    avatar: string;
-    contribution: number;
-    link?: string;
-}
-
 export const ModuleContributors: React.FC = () => {
     const [contributors, setContributors] = useState<Contributor[]>()
 
