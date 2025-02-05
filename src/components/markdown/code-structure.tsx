@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { ChevronRight, ChevronDown, Folder, File, Loader2 } from 'lucide-react';
 
 interface GitHubItem {
@@ -20,7 +20,7 @@ const CodeStructure = ({ structure = "next-monolith" }: { structure: string }) =
     const [folderContents, setFolderContents] = useState<FolderContent>({});
     const [loadingFolders, setLoadingFolders] = useState<Set<string>>(new Set());
 
-    const fetchGitHubContent = async (path: string) => {
+    const fetchGitHubContent = useCallback(async (path: string) => {
         try {
             const response = await fetch(
                 `https://api.github.com/repos/any-source/examples/contents/${path}`
@@ -36,7 +36,7 @@ const CodeStructure = ({ structure = "next-monolith" }: { structure: string }) =
             }
             throw new Error('An unknown error occurred');
         }
-    };
+    }, []);
 
     // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
     useEffect(() => {
@@ -61,7 +61,7 @@ const CodeStructure = ({ structure = "next-monolith" }: { structure: string }) =
         };
 
         fetchInitialContent();
-    }, []);
+    }, [structure]);
 
     const toggleFolder = async (path: string, isFolder: boolean) => {
         if (!isFolder) return;

@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import Image from "next/image";
 import { Icon } from '@iconify/react';
 import { ModuleFeatures } from './modules/features';
-import { ModuleTestimoni } from './modules/testimoni';
 import { ModuleCallToAction } from './modules/call-to-action';
 import ModuleContributors from './modules/contributor';
 import { ModuleFooter } from './modules/footer';
