@@ -23,9 +23,12 @@ export const ROUTES: EachRoute[] = [
 				href: "/create-new-project",
 				noLink: true,
 				items: [
-					{ title: "FS - Next Js", href: "/fs-next" },
-					{ title: "FE - Next Js", href: "/fe-next" },
-					{ title: "BE - Hono", href: "/be-hono" },
+					{ title: "FS - Next Monolith", href: "/fs-next" },
+					{ title: "FE - Next Frontend", href: "/fe-next" },
+					{ title: "BE - Elysia", href: "/be-elysia" },
+					{ title: "BE - Golang", href: "/be-golang" },
+					{ title: "FE - Astro", href: "/fe-astro" },
+					{ title: "MN - Kotlin MVVM", href: "/kt-mobile-mvvm" },
 				],
 			},
 			{
