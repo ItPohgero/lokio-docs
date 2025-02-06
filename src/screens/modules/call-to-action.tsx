@@ -21,13 +21,13 @@ export function ModuleCallToAction() {
                         Join thousands of developers who are already using Lokio to structure their code and boost productivity.
                     </p>
                     <div className="flex justify-start gap-4 mt-4">
-                        
+
                         <Link
                             href={`/docs${page_routes[0].href}`}
                             className={buttonVariants({
                                 variant: "destructive",
                                 size: "lg",
-                                className: "group bg-orange-700"
+                                className: "group bg-orange-700 hover:bg-orange-800"
                             })}
                         >
                             Docs

@@ -10,12 +10,12 @@ export function Footer() {
 				<div className="flex items-center gap-3">
 					<Image src="/logo.png" width={20} height={20} alt="Logo" />
 					<p className="text-center">
-						Make with love by
+						&copy; {new Date().getFullYear()}
 						<Link
-							className="px-1 underline underline-offset-2 font-bold"
+							className="px-1 font-bold"
 							href="https://github.com/any-source"
 						>
-							any-source
+							any-source (itpohgero)
 						</Link>
 					</p>
 				</div>

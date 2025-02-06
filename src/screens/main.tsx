@@ -9,6 +9,7 @@ import ModuleContributors from './modules/contributor';
 import { ModuleFooter } from './modules/footer';
 
 export default function ScreenMain() {
+	const [copy, setCopy] = useState<boolean>(false);
 	const [activeTab, setActiveTab] = useState<'mac' | 'linux' | 'windows'>('mac');
 
 	const logos = [
@@ -21,9 +22,17 @@ export default function ScreenMain() {
 	];
 
 	const installCommands: { [key in 'mac' | 'linux' | 'windows']: string } = {
-		mac: "curl -fsSL https://lokio.dev/in/mac.sh | bash",
-		linux: "curl -fsSL https://lokio.dev/in/linux.sh | bash",
-		windows: 'powershell -c "irm https://lokio.dev/in/win.ps1 | iex"'
+		mac: "curl -fsSL lokio.dev/in/mac.sh | bash",
+		linux: "curl -fsSL lokio.dev/in/linux.sh | bash",
+		windows: 'powershell -c "irm https://www.lokio.dev/in/win.ps1 | iex"'
+	};
+
+	const handleCopy = () => {
+		navigator.clipboard.writeText(installCommands[activeTab]);
+		setCopy(true);
+		setTimeout(() => {
+			setCopy(false);
+		}, 2000);
 	};
 
 	return (
@@ -65,8 +74,8 @@ export default function ScreenMain() {
 										key={platform}
 										onClick={() => setActiveTab(platform as "mac" | "linux" | "windows")}
 										className={`px-4 py-2 rounded-lg transition-colors ${activeTab === platform
-												? "bg-primary text-primary-foreground"
-												: "bg-secondary hover:bg-secondary/80"
+											? "bg-primary text-primary-foreground"
+											: "bg-secondary hover:bg-secondary/80"
 											}`}
 									>
 										{platform.charAt(0).toUpperCase() + platform.slice(1)}
@@ -83,10 +92,14 @@ export default function ScreenMain() {
 								</div>
 								<button
 									type="button"
-									onClick={() => navigator.clipboard.writeText(installCommands[activeTab])}
+									onClick={handleCopy}
 									className="absolute right-2 top-2 p-2 rounded-md hover:bg-primary/10 hidden lg:block"
 								>
-									<Icon icon="mdi:content-copy" className="w-5 h-5" />
+									{copy ? (
+										<Icon icon="mdi:check" className="w-5 h-5" />
+									) : (
+										<Icon icon="mdi:content-copy" className="w-5 h-5" />
+									)}
 								</button>
 							</div>
 						</div>
