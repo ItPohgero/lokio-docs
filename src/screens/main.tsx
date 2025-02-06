@@ -9,6 +9,7 @@ import ModuleContributors from './modules/contributor';
 import { ModuleFooter } from './modules/footer';
 
 export default function ScreenMain() {
+	const [copy, setCopy] = useState<boolean>(false);
 	const [activeTab, setActiveTab] = useState<'mac' | 'linux' | 'windows'>('mac');
 
 	const logos = [
@@ -16,14 +17,29 @@ export default function ScreenMain() {
 		{ icon: 'logos:astro', name: 'Astro' },
 		{ icon: 'logos:go', name: 'Golang' },
 		{ icon: 'logos:kotlin', name: 'Kotlin' },
-		{ icon: 'simple-icons:hono', name: 'Hono' },
-		{ icon: 'logos:rust', name: 'Rust' }
-	];
+		{ icon: 'vscode-icons:file-type-bun', name: 'Bun' },
+		{ icon: 'logos:hono', name: 'Hono' },
+		{ icon: 'logos:rust', name: 'Rust' },
+		{ icon: 'logos:vue', name: 'Vue' },
+		{ icon: 'logos:nuxt-icon', name: 'Nuxt.js' },
+		{ icon: 'logos:react', name: 'React' },
+		{ icon: 'logos:flutter', name: 'Flutter' },
+		{ icon: 'logos:tailwindcss-icon', name: 'Tailwind CSS' },
+		{ icon: 'skill-icons:elysia-dark', name: 'Elysia' },
+	  ];
 
 	const installCommands: { [key in 'mac' | 'linux' | 'windows']: string } = {
-		mac: "curl -fsSL https://lokio.dev/in/mac.sh | bash",
-		linux: "curl -fsSL https://lokio.dev/in/linux.sh | bash",
-		windows: 'powershell -c "irm bun.sh/install.ps1|iex"'
+		mac: "curl -fsSL lokio.dev/in/mac.sh | bash",
+		linux: "curl -fsSL lokio.dev/in/linux.sh | bash",
+		windows: 'powershell -c "irm https://www.lokio.dev/in/win.ps1 | iex"'
+	};
+
+	const handleCopy = () => {
+		navigator.clipboard.writeText(installCommands[activeTab]);
+		setCopy(true);
+		setTimeout(() => {
+			setCopy(false);
+		}, 2000);
 	};
 
 	return (
@@ -65,8 +81,8 @@ export default function ScreenMain() {
 										key={platform}
 										onClick={() => setActiveTab(platform as "mac" | "linux" | "windows")}
 										className={`px-4 py-2 rounded-lg transition-colors ${activeTab === platform
-												? "bg-primary text-primary-foreground"
-												: "bg-secondary hover:bg-secondary/80"
+											? "bg-primary text-primary-foreground"
+											: "bg-secondary hover:bg-secondary/80"
 											}`}
 									>
 										{platform.charAt(0).toUpperCase() + platform.slice(1)}
@@ -83,10 +99,14 @@ export default function ScreenMain() {
 								</div>
 								<button
 									type="button"
-									onClick={() => navigator.clipboard.writeText(installCommands[activeTab])}
+									onClick={handleCopy}
 									className="absolute right-2 top-2 p-2 rounded-md hover:bg-primary/10 hidden lg:block"
 								>
-									<Icon icon="mdi:content-copy" className="w-5 h-5" />
+									{copy ? (
+										<Icon icon="mdi:check" className="w-5 h-5" />
+									) : (
+										<Icon icon="mdi:content-copy" className="w-5 h-5" />
+									)}
 								</button>
 							</div>
 						</div>
@@ -107,10 +127,11 @@ export default function ScreenMain() {
 									transition={{ duration: 0.4, delay: index * 0.1 }}
 									className="group relative mt-2"
 								>
-									<div className="w-16 lg:w-24 h-16 lg:h-24 flex items-center justify-center rounded-2xl bg-secondary/50 backdrop-blur-sm 
-                                hover:bg-secondary transition-all duration-300 hover:shadow-lg hover:scale-105">
+									<div className="w-16 lg:w-24 h-16 lg:h-24 flex items-center justify-center rounded-2xl bg-secondary backdrop-blur-sm 
+                hover:bg-secondary transition-all duration-300 hover:shadow-lg hover:scale-105">
 										<Icon icon={icon} className="w-12 h-12" />
 									</div>
+
 									<span className="absolute -bottom-7 left-1/2 -translate-x-1/2 text-sm opacity-0 group-hover:opacity-100 
                                 transition-all duration-300 whitespace-nowrap">
 										{name}

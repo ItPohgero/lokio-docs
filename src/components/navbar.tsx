@@ -19,6 +19,10 @@ export const NAVLINKS = [
 		title: "Blog",
 		href: "/blog",
 	},
+	{
+		title: "Sponsor",
+		href: "https://saweria.co/itpohgero",
+	}
 ];
 
 export function Navbar() {

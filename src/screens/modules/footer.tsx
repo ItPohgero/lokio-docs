@@ -78,14 +78,6 @@ export function ModuleFooter() {
                         </div>
                     </motion.div>
                 </div>
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.8 }}
-                    className="border-t border-secondary/20 mt-8 pt-8 text-center text-muted-foreground"
-                >
-                    <p>&copy; {new Date().getFullYear()} Lokio. All rights reserved.</p>
-                </motion.div>
             </div>
         </footer>
     );
