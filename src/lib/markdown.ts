@@ -85,6 +85,10 @@ const components = {
 	ContributorProfile,
 	table: CustomTable,
 	tr: CustomTableRow,
+	CodeStructure,
+	CodeStructureLokio,
+	CodeStructureLokioDocs,
+	CodeStructureLokioExamples,
 };
 
 // can be used for other pages like blogs, Guides etc
@@ -128,7 +132,7 @@ export async function getDocsForSlug(slug: string, lang?: string) {
 		const rawMdx = await fs.readFile(contentPath, "utf-8");
 		return await parseMdx<BaseMdxFrontmatter>(rawMdx);
 	} catch (err) {
-		console.log(err);
+		console.error(err);
 	}
 }
 
@@ -218,6 +222,10 @@ export async function getAllChilds(pathString: string) {
 }
 
 import type { Node } from "unist";
+import CodeStructure from "@/components/markdown/code-structure";
+import CodeStructureLokio from "@/components/markdown/code-structure-lokio";
+import CodeStructureLokioDocs from "@/components/markdown/code-structure-docs";
+import CodeStructureLokioExamples from "@/components/markdown/code-structure-examples";
 
 const preProcess = () => (tree: Node) => {
 	visit(tree, (node) => {
@@ -260,7 +268,7 @@ export async function getAllBlogStaticPaths() {
 		const res = await fs.readdir(blogFolder);
 		return res.map((file) => file.split(".")[0]);
 	} catch (err) {
-		console.log(err);
+		console.error(err);
 	}
 }
 export async function getAllBlogs() {

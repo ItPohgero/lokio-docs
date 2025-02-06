@@ -19,22 +19,21 @@ export const ROUTES: EachRoute[] = [
 				href: "/installation",
 			},
 			{
-				title: "Create (New Project)",
+				title: "Create",
 				href: "/create-new-project",
 				noLink: true,
 				items: [
-					{ title: "FS - Next Js", href: "/fs-next" },
-					{ title: "FE - Next Js", href: "/fe-next" },
-					{ title: "BE - Hono", href: "/be-hono" },
+					{ title: "Create Next Monolith", href: "/fs-next" },
+					{ title: "Create Next Frontend", href: "/fe-next" },
+					{ title: "Create Elysia", href: "/be-elysia" },
+					{ title: "Create Golang", href: "/be-golang" },
+					{ title: "Create Astro", href: "/fe-astro" },
+					{ title: "Create Kotlin MVVM", href: "/kt-mobile-mvvm" },
 				],
 			},
 			{
-				title: "Init (Existing Project)",
-				href: "/existing-project",
-			},
-			{
-				title: "Commands",
-				href: "/commands",
+				title: "Make",
+				href: "/make",
 				noLink: true,
 				items: [
 					{ title: "Make Screen", href: "/make-screen" },
@@ -44,6 +43,13 @@ export const ROUTES: EachRoute[] = [
 					{ title: "Make Schema", href: "/make-schema" },
 					{ title: "Make Component", href: "/make-component" },
 					{ title: "Make Call", href: "/make-call" },
+				],
+			},
+			{
+				title: "Generate",
+				href: "/generate",
+				noLink: true,
+				items: [
 					{ title: "Generate Component", href: "/gen-component" },
 					{ title: "Generate Hook", href: "/gen-hook" },
 				],

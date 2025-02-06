@@ -3,189 +3,45 @@ title: Installation
 description: Installation guide for our application.
 ---
 
-Install lokio Cli and we will speed up the structured development process.
-## Installation Globally
-To start lokio-cli, you must install it locally or globally (recommendations), can be with NPM, PMPM, Yarn or Bun (recommendations).
+Install lokio Assistant and we will speed up the structured development process.
+## Installation
+To start lokio, you must install it 
 <Stepper>
-  <StepperItem title="Step 1: Install Bun if you haven't already (recommended)">
-    <Tabs defaultValue="mac-linux" className="pt-5 pb-1">
+  <StepperItem title="Step 1: Installing Lokio Assistant">
+    <Tabs defaultValue="mac" className="pt-5 pb-1">
       <TabsList>
-        <TabsTrigger value="mac-linux">Mac /  Linux</TabsTrigger>
-        <TabsTrigger value="windows">Windows</TabsTrigger>
+        <TabsTrigger value="mac">Mac (arm64)</TabsTrigger>
+        <TabsTrigger value="linux">Linux</TabsTrigger>
+        <TabsTrigger value="windows">Windows (x64)</TabsTrigger>
       </TabsList>
-      <TabsContent value="mac-linux">
+      <TabsContent value="mac">
         ```bash
-        curl -fsSL https://bun.sh/install | bash
+        curl -fsSL https://lokio.dev/in/mac.sh | bash
+        ```
+      </TabsContent>
+      <TabsContent value="linux">
+        ```bash
+        curl -fsSL https://lokio.dev/in/linux.sh | bash
         ```
       </TabsContent>
       <TabsContent value="windows">
         ```bash
-        powershell -c "irm bun.sh/install.ps1 | iex"
+        powershell -c "irm https://lokio.dev/in/win.ps1 | iex"
         ```
       </TabsContent>
     </Tabs>
-    Check your bun version to ensure it's installed correctly:
+    Check your lokio version:
     ```bash
-    bun --version
+    lokio --version or lokio -v
     ```
 
   </StepperItem>
   
 
-  <StepperItem title="Step 2: Install lokio Cli Globally">
-    After installing Bun, you can install lokio Cli globally with the following command:
-    <Tabs defaultValue="bun" className="pt-5 pb-1">
-      <TabsList>
-        <TabsTrigger value="bun">bun</TabsTrigger>
-        <TabsTrigger value="npm">npm</TabsTrigger>
-        <TabsTrigger value="yarn">yarn</TabsTrigger>
-        <TabsTrigger value="pnpm">pnpm</TabsTrigger>
-      </TabsList>
-      <TabsContent value="bun">
-        ```bash
-        bun add -g lokio-cli
-        ```
-      </TabsContent>
-      <TabsContent value="npm">
-        ```bash
-        npm install -g lokio-cli
-        ```
-      </TabsContent>
-      <TabsContent value="yarn">
-        ```bash
-        yarn global add lokio-cli
-        ```
-      </TabsContent>
-      <TabsContent value="pnpm">
-        ```bash
-        pnpm add -g lokio-cli
-        ```
-      </TabsContent>
-    </Tabs>
-    Check your lokio Cli version to ensure it's installed correctly:
-```bash
-// check your lokio version
-lokio --version
-lokio -v
-```
-  </StepperItem>
-
-  <StepperItem title="Step 3: lokio CLI Usage">
+  <StepperItem title="Step 2: Lokio Usage">
     You can take advantage of the lokio-cli features with the following command:
     <Note title="Remember">
       If we have the last directory, then lokio-Cli has only 2 commands init and creation.
     </Note>
-    
-    Create a new project with the following command:
-    ```bash
-    // write in your terminal
-    lokio create <project-name>
-    -------------
-    Would you like to install a starter kit? (Use arrow keys)
-    - [Monolith] - React | Next.js | Hono
-    - [Frontend] - React | Next.js
-    - [Backend] - Hono
-    ```
-    Initialize an existing project with the following command:
-    ```bash
-    // write in your terminal
-    lokio init
-    -------------
-    Select your project base framework? (Use arrow keys)
-    - [FS]-Next
-    - [FE]-Next
-    - [BE]-Hono
-    ```
-
-    System will be create new file **.lokio.yaml**, this is a standard configuration file for lokio-cli.
-  </StepperItem>
-</Stepper>
-
-## Installation Locally
-
-lokio can be installed in a local project, but this only applies to the existing project.
-
-
-<Stepper>
-  <StepperItem title="Step 1: Sign into Project Existing and Install">
-    ```
-    cd <project>
-    ```
-    Install lokio in Exsting Project
-    <Tabs defaultValue="bun" className="pt-5 pb-1">
-    <TabsList>
-        <TabsTrigger value="bun">bun</TabsTrigger>
-        <TabsTrigger value="npm">npm</TabsTrigger>
-        <TabsTrigger value="yarn">yarn</TabsTrigger>
-        <TabsTrigger value="pnpm">pnpm</TabsTrigger>
-      </TabsList>
-      <TabsContent value="bun">
-        ```
-        bun add lokio-cli
-        ```
-      </TabsContent>
-      <TabsContent value="npm">
-        ```
-        npm install lokio-cli
-        ```
-      </TabsContent>
-      <TabsContent value="yarn">
-        ```
-        yarn add lokio-cli
-        ```
-      </TabsContent>
-      <TabsContent value="pnpm">
-        ```
-        pnpm add lokio-cli
-        ```
-      </TabsContent>
-    </Tabs>
-  </StepperItem>
-  <StepperItem title="Step 2: Initialization lokio cli">
-    ```
-    bunx lokio init
-    ```
-  </StepperItem>
-  <StepperItem title="Step 3: Select project type">
-    Initialize an existing project with the following command:
-    ```
-    // write in your terminal
-    bunx lokio init
-    -------------
-    Select your project base framework? (Use arrow keys)
-    - [FS]-Next
-    - [FE]-Next
-    - [BE]-Hono
-    ```
-  </StepperItem>
-   <StepperItem title="Step 4: Check lokio">
-    <Tabs defaultValue="bun" className="pt-5 pb-1">
-    <TabsList>
-        <TabsTrigger value="bun">bun</TabsTrigger>
-        <TabsTrigger value="npm">npm</TabsTrigger>
-        <TabsTrigger value="yarn">yarn</TabsTrigger>
-        <TabsTrigger value="pnpm">pnpm</TabsTrigger>
-      </TabsList>
-      <TabsContent value="bun">
-        ```
-        bunx lokio
-        ```
-      </TabsContent>
-      <TabsContent value="npm">
-        ```
-        npx lokio
-        ```
-      </TabsContent>
-      <TabsContent value="yarn">
-        ```
-        yarn lokio
-        ```
-      </TabsContent>
-      <TabsContent value="pnpm">
-        ```
-        pnpx lokio
-        ```
-      </TabsContent>
-    </Tabs>
   </StepperItem>
 </Stepper>
