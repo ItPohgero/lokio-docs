@@ -54,8 +54,20 @@ unzip -o lokio.zip || {
     exit 1
 }
 
+# Find the extracted executable and rename it
+extracted_exe=$(find . -type f -name "lokio-*" -not -name "*.zip")
+if [ -n "$extracted_exe" ]; then
+    mv "$extracted_exe" lokio || {
+        echo "error: Failed to rename lokio executable"
+        exit 1
+    }
+else
+    echo "error: Could not find extracted lokio executable"
+    exit 1
+fi
+
 # Set permissions
-chmod +x "$exe" || {
+chmod +x lokio || {
     echo "error: Failed to set permissions on lokio executable"
     exit 1
 }
