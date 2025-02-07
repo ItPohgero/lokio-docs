@@ -1,7 +1,7 @@
 import { HeartIcon } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { buttonVariants } from "./ui/button";
-import Image from "next/image";
 
 export function Footer() {
 	return (
