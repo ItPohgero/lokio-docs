@@ -5,7 +5,7 @@ platform=$(uname -ms)
 
 if [[ ${OS:-} = Windows_NT ]]; then
   if [[ $platform != MINGW64* ]]; then
-    powershell -c "irm https://raw.githubusercontent.com/any-source/lokio/main/install.ps1|iex"
+    powershell -c "irm https://raw.githubusercontent.com/any-source/lokio-docs/main/public/install.ps1 | iex"
     exit $?
   fi
 fi
