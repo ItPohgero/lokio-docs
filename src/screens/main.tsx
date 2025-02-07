@@ -32,7 +32,7 @@ export default function ScreenMain() {
 
 	const installCommands: { [key in "mac or linux" | "windows"]: string } = {
 		"mac or linux": "curl -fsSL lokio.dev/install.sh | bash",
-		windows: 'powershell -c "irm https://www.lokio.dev/in/win.ps1 | iex"',
+		windows: 'powershell -c "irm lokio.dev/install.ps1 | iex"',
 	};
 
 	const handleCopy = () => {
