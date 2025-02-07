@@ -71,7 +71,7 @@ if [[ ! -x "$exe" ]]; then
 fi
 
 # Tentukan file konfigurasi shell
-shell_config="$HOME/.profile"
+shell_config="$HOME/.zshrc"
 
 # Tambahkan ke PATH jika belum ada
 if [[ -f "$shell_config" && ! $(grep -qF "export PATH=\"$bin_dir:\$PATH\"" "$shell_config") ]]; then
