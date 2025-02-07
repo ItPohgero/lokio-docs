@@ -10,8 +10,8 @@ import { ModuleFooter } from "./modules/footer";
 
 export default function ScreenMain() {
 	const [copy, setCopy] = useState<boolean>(false);
-	const [activeTab, setActiveTab] = useState<"mac" | "linux" | "windows">(
-		"mac",
+	const [activeTab, setActiveTab] = useState<"mac or linux" | "windows">(
+		"mac or linux",
 	);
 
 	const logos = [
@@ -30,9 +30,8 @@ export default function ScreenMain() {
 		{ icon: "skill-icons:elysia-dark", name: "Elysia" },
 	];
 
-	const installCommands: { [key in "mac" | "linux" | "windows"]: string } = {
-		mac: "curl -fsSL lokio.dev/in/mac.sh | bash",
-		linux: "curl -fsSL lokio.dev/in/linux.sh | bash",
+	const installCommands: { [key in "mac or linux" | "windows"]: string } = {
+		"mac or linux": "curl -fsSL lokio.dev/install.sh | bash",
 		windows: 'powershell -c "irm https://www.lokio.dev/in/win.ps1 | iex"',
 	};
 
@@ -93,7 +92,7 @@ export default function ScreenMain() {
 										type="button"
 										key={platform}
 										onClick={() =>
-											setActiveTab(platform as "mac" | "linux" | "windows")
+											setActiveTab(platform as "mac or linux" | "windows")
 										}
 										className={`px-4 py-2 rounded-lg transition-colors ${
 											activeTab === platform
