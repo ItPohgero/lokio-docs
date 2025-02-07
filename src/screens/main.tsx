@@ -15,19 +15,19 @@ export default function ScreenMain() {
 	);
 
 	const logos = [
-		{ icon: "logos:nextjs-icon", name: "Next.js" },
-		{ icon: "logos:astro", name: "Astro" },
-		{ icon: "logos:go", name: "Golang" },
-		{ icon: "logos:kotlin", name: "Kotlin" },
-		{ icon: "vscode-icons:file-type-bun", name: "Bun" },
-		{ icon: "logos:hono", name: "Hono" },
-		{ icon: "logos:rust", name: "Rust" },
-		{ icon: "logos:vue", name: "Vue" },
-		{ icon: "logos:nuxt-icon", name: "Nuxt.js" },
-		{ icon: "logos:react", name: "React" },
-		{ icon: "logos:flutter", name: "Flutter" },
-		{ icon: "logos:tailwindcss-icon", name: "Tailwind CSS" },
-		{ icon: "skill-icons:elysia-dark", name: "Elysia" },
+		{ icon: "lineicons:nextjs", name: "Next.js" },
+		{ icon: "lineicons:astro", name: "Astro" },
+		{ icon: "fa6-brands:golang", name: "Golang" },
+		{ icon: "devicon-plain:kotlin", name: "Kotlin" },
+		{ icon: "simple-icons:bun", name: "Bun" },
+		{ icon: "simple-icons:hono", name: "Hono" },
+		{ icon: "fa6-brands:rust", name: "Rust" },
+		{ icon: "lineicons:vuejs", name: "Vue" },
+		{ icon: "lineicons:nuxt", name: "Nuxt.js" },
+		{ icon: "lineicons:react", name: "React" },
+		{ icon: "lineicons:flutter", name: "Flutter" },
+		{ icon: "lineicons:tailwindcss", name: "Tailwind CSS" },
+		{ icon: "lineicons:typescript", name: "Typescript" },
 	];
 
 	const installCommands: { [key in "mac or linux" | "windows"]: string } = {
@@ -143,15 +143,15 @@ export default function ScreenMain() {
 									className="group relative mt-2"
 								>
 									<div
-										className="w-16 lg:w-24 h-16 lg:h-24 flex items-center justify-center rounded-2xl bg-secondary backdrop-blur-sm 
+										className="w-16 lg:w-24 h-16 lg:h-24 flex items-center justify-center rounded-2xl bg-secondary/50 backdrop-blur-sm 
                 hover:bg-secondary transition-all duration-300 hover:shadow-lg hover:scale-105"
 									>
-										<Icon icon={icon} className="w-12 h-12" />
+										<Icon icon={icon} className="w-12 h-12 text-muted-foreground" />
 									</div>
 
 									<span
 										className="absolute -bottom-7 left-1/2 -translate-x-1/2 text-sm opacity-0 group-hover:opacity-100 
-                                transition-all duration-300 whitespace-nowrap"
+                                transition-all duration-300 whitespace-nowrap hidden lg:block"
 									>
 										{name}
 									</span>
