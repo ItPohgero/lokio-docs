@@ -3,12 +3,12 @@ import { SheetClose } from "@/components/ui/sheet";
 import { ENV } from "@/configs/env";
 import { page_routes } from "@/lib/routes-config";
 import { Icon } from "@iconify/react";
+import Image from "next/image";
 import Link from "next/link";
 import Anchor from "./anchor";
 import { SheetLeftbar } from "./leftbar";
 import Search from "./search";
 import { buttonVariants } from "./ui/button";
-import Image from "next/image";
 
 export const NAVLINKS = [
 	{
@@ -22,7 +22,7 @@ export const NAVLINKS = [
 	{
 		title: "Sponsor",
 		href: "https://saweria.co/itpohgero",
-	}
+	},
 ];
 
 export function Navbar() {

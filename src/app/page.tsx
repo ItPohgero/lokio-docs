@@ -1,5 +1,4 @@
 import ScreenMain from "@/screens/main";
-import React from "react";
 
 const Page = () => <ScreenMain />;
 

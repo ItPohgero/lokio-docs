@@ -3,6 +3,7 @@ import { Footer } from "@/components/footer";
 import { Navbar } from "@/components/navbar";
 import type { Metadata } from "next";
 import { Inter, Open_Sans } from "next/font/google";
+import type React from "react";
 import "@/styles/globals.css";
 import { ENV } from "@/configs/env";
 import NextTopLoader from "nextjs-toploader";

@@ -1,37 +1,39 @@
-'use client';
-import { useState } from 'react';
-import { motion } from 'framer-motion';
+"use client";
+import { Icon } from "@iconify/react";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import { Icon } from '@iconify/react';
-import { ModuleFeatures } from './modules/features';
-import { ModuleCallToAction } from './modules/call-to-action';
-import ModuleContributors from './modules/contributor';
-import { ModuleFooter } from './modules/footer';
+import { useState } from "react";
+import { ModuleCallToAction } from "./modules/call-to-action";
+import ModuleContributors from "./modules/contributor";
+import { ModuleFeatures } from "./modules/features";
+import { ModuleFooter } from "./modules/footer";
 
 export default function ScreenMain() {
 	const [copy, setCopy] = useState<boolean>(false);
-	const [activeTab, setActiveTab] = useState<'mac' | 'linux' | 'windows'>('mac');
+	const [activeTab, setActiveTab] = useState<"mac" | "linux" | "windows">(
+		"mac",
+	);
 
 	const logos = [
-		{ icon: 'logos:nextjs-icon', name: 'Next.js' },
-		{ icon: 'logos:astro', name: 'Astro' },
-		{ icon: 'logos:go', name: 'Golang' },
-		{ icon: 'logos:kotlin', name: 'Kotlin' },
-		{ icon: 'vscode-icons:file-type-bun', name: 'Bun' },
-		{ icon: 'logos:hono', name: 'Hono' },
-		{ icon: 'logos:rust', name: 'Rust' },
-		{ icon: 'logos:vue', name: 'Vue' },
-		{ icon: 'logos:nuxt-icon', name: 'Nuxt.js' },
-		{ icon: 'logos:react', name: 'React' },
-		{ icon: 'logos:flutter', name: 'Flutter' },
-		{ icon: 'logos:tailwindcss-icon', name: 'Tailwind CSS' },
-		{ icon: 'skill-icons:elysia-dark', name: 'Elysia' },
-	  ];
+		{ icon: "logos:nextjs-icon", name: "Next.js" },
+		{ icon: "logos:astro", name: "Astro" },
+		{ icon: "logos:go", name: "Golang" },
+		{ icon: "logos:kotlin", name: "Kotlin" },
+		{ icon: "vscode-icons:file-type-bun", name: "Bun" },
+		{ icon: "logos:hono", name: "Hono" },
+		{ icon: "logos:rust", name: "Rust" },
+		{ icon: "logos:vue", name: "Vue" },
+		{ icon: "logos:nuxt-icon", name: "Nuxt.js" },
+		{ icon: "logos:react", name: "React" },
+		{ icon: "logos:flutter", name: "Flutter" },
+		{ icon: "logos:tailwindcss-icon", name: "Tailwind CSS" },
+		{ icon: "skill-icons:elysia-dark", name: "Elysia" },
+	];
 
-	const installCommands: { [key in 'mac' | 'linux' | 'windows']: string } = {
+	const installCommands: { [key in "mac" | "linux" | "windows"]: string } = {
 		mac: "curl -fsSL lokio.dev/in/mac.sh | bash",
 		linux: "curl -fsSL lokio.dev/in/linux.sh | bash",
-		windows: 'powershell -c "irm https://www.lokio.dev/in/win.ps1 | iex"'
+		windows: 'powershell -c "irm https://www.lokio.dev/in/win.ps1 | iex"',
 	};
 
 	const handleCopy = () => {
@@ -54,10 +56,20 @@ export default function ScreenMain() {
 					>
 						<div className="flex justify-start">
 							<div className="dark:hidden block">
-								<Image src="/logo-black.svg" width={200} height={200} alt="Logo" />
+								<Image
+									src="/logo-black.svg"
+									width={200}
+									height={200}
+									alt="Logo"
+								/>
 							</div>
 							<div className="dark:block hidden">
-								<Image src="/logo-white.svg" width={200} height={200} alt="Logo" />
+								<Image
+									src="/logo-white.svg"
+									width={200}
+									height={200}
+									alt="Logo"
+								/>
 							</div>
 						</div>
 
@@ -69,7 +81,8 @@ export default function ScreenMain() {
 								</span>
 							</h1>
 							<p className="lg:text-xl text-muted-foreground max-w-2xl">
-								Lokio is an Assistant CLI that helps create more structured, fast, and efficient projects.
+								Lokio is an Assistant CLI that helps create more structured,
+								fast, and efficient projects.
 							</p>
 						</div>
 
@@ -79,11 +92,14 @@ export default function ScreenMain() {
 									<button
 										type="button"
 										key={platform}
-										onClick={() => setActiveTab(platform as "mac" | "linux" | "windows")}
-										className={`px-4 py-2 rounded-lg transition-colors ${activeTab === platform
-											? "bg-primary text-primary-foreground"
-											: "bg-secondary hover:bg-secondary/80"
-											}`}
+										onClick={() =>
+											setActiveTab(platform as "mac" | "linux" | "windows")
+										}
+										className={`px-4 py-2 rounded-lg transition-colors ${
+											activeTab === platform
+												? "bg-primary text-primary-foreground"
+												: "bg-secondary hover:bg-secondary/80"
+										}`}
 									>
 										{platform.charAt(0).toUpperCase() + platform.slice(1)}
 									</button>
@@ -127,13 +143,17 @@ export default function ScreenMain() {
 									transition={{ duration: 0.4, delay: index * 0.1 }}
 									className="group relative mt-2"
 								>
-									<div className="w-16 lg:w-24 h-16 lg:h-24 flex items-center justify-center rounded-2xl bg-secondary backdrop-blur-sm 
-                hover:bg-secondary transition-all duration-300 hover:shadow-lg hover:scale-105">
+									<div
+										className="w-16 lg:w-24 h-16 lg:h-24 flex items-center justify-center rounded-2xl bg-secondary backdrop-blur-sm 
+                hover:bg-secondary transition-all duration-300 hover:shadow-lg hover:scale-105"
+									>
 										<Icon icon={icon} className="w-12 h-12" />
 									</div>
 
-									<span className="absolute -bottom-7 left-1/2 -translate-x-1/2 text-sm opacity-0 group-hover:opacity-100 
-                                transition-all duration-300 whitespace-nowrap">
+									<span
+										className="absolute -bottom-7 left-1/2 -translate-x-1/2 text-sm opacity-0 group-hover:opacity-100 
+                                transition-all duration-300 whitespace-nowrap"
+									>
 										{name}
 									</span>
 								</motion.div>

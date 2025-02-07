@@ -1,59 +1,40 @@
-# win.ps1 - Script instalasi untuk Windows
+# win.ps1
+$ErrorActionPreference = 'Stop'
 
-# URL unduhan
-$URL = "https://github.com/any-source/lokio/releases/download/latest/windows.exe"
-$BINARY_NAME = "lokio.exe"
-$INSTALL_DIR = "$env:USERPROFILE\AppData\Local\bin"
+Write-Host "=== Lokio CLI Installer ===" -ForegroundColor Cyan
 
-# Fungsi untuk menampilkan pesan status
-function Print-Status {
-    param ([string]$message)
-    Write-Host "==> $message" -ForegroundColor Cyan
+# Tetapkan path instalasi
+$installDir = "$env:USERPROFILE\lokio"
+$exePath = "$installDir\lokio.exe"
+$exeUrl = "https://github.com/any-source/lokio/releases/download/latest/windows.exe"
+
+# Buat direktori instalasi
+if (-not (Test-Path $installDir)) {
+    Write-Host "Membuat direktori instalasi..." -ForegroundColor Yellow
+    New-Item -ItemType Directory -Force -Path $installDir | Out-Null
 }
 
-# Fungsi untuk menampilkan pesan sukses
-function Print-Success {
-    param ([string]$message)
-    Write-Host "[✓] $message" -ForegroundColor Green
-}
-
-# Fungsi untuk menampilkan pesan error
-function Print-Error {
-    param ([string]$message)
-    Write-Host "[✗] $message" -ForegroundColor Red
-}
-
-Print-Status "Installing $BINARY_NAME..."
-
-# Pastikan direktori instalasi ada
-if (-Not (Test-Path $INSTALL_DIR)) {
-    New-Item -ItemType Directory -Path $INSTALL_DIR | Out-Null
-    Print-Success "Install directory created: $INSTALL_DIR"
-} else {
-    Print-Success "Install directory already exists: $INSTALL_DIR"
-}
-
-# Unduh file
-Print-Status "Downloading $BINARY_NAME..."
-Invoke-WebRequest -Uri $URL -OutFile "$INSTALL_DIR\$BINARY_NAME"
-Print-Success "$BINARY_NAME downloaded successfully."
-
-# Tambahkan direktori instalasi ke PATH jika belum ada
-Print-Status "Checking PATH..."
-$currentPath = [Environment]::GetEnvironmentVariable("PATH", [EnvironmentVariableTarget]::User)
-if (-Not ($currentPath -split ";" -contains $INSTALL_DIR)) {
-    [Environment]::SetEnvironmentVariable("PATH", "$currentPath;$INSTALL_DIR", [EnvironmentVariableTarget]::User)
-    Print-Success "$INSTALL_DIR added to PATH."
-} else {
-    Print-Success "$INSTALL_DIR is already in PATH."
-}
-
-# Verifikasi instalasi
-Print-Status "Verifying installation..."
-if (Get-Command $BINARY_NAME -ErrorAction SilentlyContinue) {
-    Print-Success "$BINARY_NAME successfully installed!"
-    & "$INSTALL_DIR\$BINARY_NAME"
-} else {
-    Print-Error "Failed to install $BINARY_NAME."
+# Unduh executable
+Write-Host "Mengunduh Lokio CLI..." -ForegroundColor Yellow
+try {
+    Invoke-WebRequest -Uri $exeUrl -OutFile $exePath
+} catch {
+    Write-Host "Gagal mengunduh Lokio CLI: $_" -ForegroundColor Red
     exit 1
 }
+
+# Tambahkan ke PATH
+$userPath = [Environment]::GetEnvironmentVariable("Path", "User")
+if ($userPath -notlike "*$installDir*") {
+    Write-Host "Menambahkan Lokio ke PATH..." -ForegroundColor Yellow
+    [Environment]::SetEnvironmentVariable(
+        "Path",
+        "$userPath;$installDir",
+        "User"
+    )
+}
+
+Write-Host "`n✨ Lokio CLI berhasil diinstal!" -ForegroundColor Green
+Write-Host "Lokasi: $exePath" -ForegroundColor Gray
+Write-Host "`nGunakan 'lokio' dari Command Prompt atau PowerShell" -ForegroundColor Cyan
+Write-Host "Contoh: lokio --help`n" -ForegroundColor Yellow
