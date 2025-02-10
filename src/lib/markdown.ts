@@ -88,7 +88,7 @@ const components = {
 	CodeStructure,
 	CodeStructureLokio,
 	CodeStructureLokioDocs,
-	CodeStructureLokioExamples,
+	CodeStructureLokioIndexing,
 };
 
 // can be used for other pages like blogs, Guides etc
@@ -223,9 +223,9 @@ export async function getAllChilds(pathString: string) {
 
 import CodeStructure from "@/components/markdown/code-structure";
 import CodeStructureLokioDocs from "@/components/markdown/code-structure-docs";
-import CodeStructureLokioExamples from "@/components/markdown/code-structure-examples";
 import CodeStructureLokio from "@/components/markdown/code-structure-lokio";
 import type { Node } from "unist";
+import CodeStructureLokioIndexing from "@/components/markdown/code-structure-indexing";
 
 const preProcess = () => (tree: Node) => {
 	visit(tree, (node) => {

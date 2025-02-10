@@ -11,9 +11,9 @@ export async function GET() {
 			owner: "any-source",
 			repo: "lokio",
 		});
-		const contributors_examples = await octokit.repos.listContributors({
+		const contributors_indexing = await octokit.repos.listContributors({
 			owner: "any-source",
-			repo: "examples",
+			repo: "indexing",
 		});
 		const contributors_docs = await octokit.repos.listContributors({
 			owner: "any-source",
@@ -22,7 +22,7 @@ export async function GET() {
 
 		const formattedContributors = [
 			...contributors.data,
-			...contributors_examples.data,
+			...contributors_indexing.data,
 			...contributors_docs.data,
 		]
 			.reduce((unique: typeof contributors.data, contributor) => {

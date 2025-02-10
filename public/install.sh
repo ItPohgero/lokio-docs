@@ -1,297 +1,99 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-platform=$(uname -ms)
-
-if [[ ${OS:-} = Windows_NT ]]; then
-  if [[ $platform != MINGW64* ]]; then
-    powershell -c "irm https://raw.githubusercontent.com/any-source/lokio/main/install.ps1|iex"
-    exit $?
-  fi
-fi
-
-# Reset
-Color_Off=''
-
-# Regular Colors
-Red=''
-Green=''
-Dim='' # White
-
-# Bold
-Bold_White=''
-Bold_Green=''
-
-if [[ -t 1 ]]; then
-    # Reset
-    Color_Off='\033[0m' # Text Reset
-
-    # Regular Colors
-    Red='\033[0;31m'   # Red
-    Green='\033[0;32m' # Green
-    Dim='\033[0;2m'    # White
-
-    # Bold
-    Bold_Green='\033[1;32m' # Bold Green
-    Bold_White='\033[1m'    # Bold White
-fi
-
-error() {
-    echo -e "${Red}error${Color_Off}:" "$@" >&2
+# Tentukan direktori instalasi
+install_dir="$HOME/.lokio"
+bin_dir="$install_dir/bin"
+mkdir -p "$bin_dir" || {
+    echo "error: Gagal membuat direktori $bin_dir"
     exit 1
 }
 
-info() {
-    echo -e "${Dim}$@ ${Color_Off}"
-}
-
-info_bold() {
-    echo -e "${Bold_White}$@ ${Color_Off}"
-}
-
-success() {
-    echo -e "${Green}$@ ${Color_Off}"
-}
-
-command -v unzip >/dev/null ||
-    error 'unzip is required to install lokio'
-
-if [[ $# -gt 2 ]]; then
-    error 'Too many arguments, only 2 are allowed. The first can be a specific tag of lokio to install. (e.g. "v1.0.0") The second can be a build variant of lokio to install. (e.g. "debug-info")'
-fi
-
+# Tentukan platform
+platform=$(uname -ms)
 case $platform in
-'Darwin x86_64')
-    target=darwin-x64
-    ;;
-'Darwin arm64')
+    'Darwin x86_64') target=darwin-x64 ;;
+    'Darwin arm64') target=darwin-aarch64 ;;
+    'Linux aarch64' | 'Linux arm64') target=linux-aarch64 ;;
+    'Linux x86_64' | *) target=linux-x64 ;;
+esac
+
+# Periksa jika berjalan di Rosetta pada Mac
+if [[ $target == "darwin-x64" && $(sysctl -n sysctl.proc_translated 2>/dev/null) == "1" ]]; then
     target=darwin-aarch64
-    ;;
-'Linux aarch64' | 'Linux arm64')
-    target=linux-aarch64
-    ;;
-'MINGW64'*)
-    target=windows-x64
-    ;;
-'Linux x86_64' | *)
-    target=linux-x64
-    ;;
-esac
-
-case "$target" in
-'linux'*)
-    if [ -f /etc/alpine-release ]; then
-        target="$target-musl"
-    fi
-    ;;
-esac
-
-if [[ $target = darwin-x64 ]]; then
-    # Is this process running in Rosetta?
-    if [[ $(sysctl -n sysctl.proc_translated 2>/dev/null) = 1 ]]; then
-        target=darwin-aarch64
-        info "Your shell is running in Rosetta 2. Downloading lokio for $target instead"
-    fi
+    echo "Info: Deteksi Rosetta 2, menggunakan $target build."
 fi
 
+# Unduh file
 github_repo="https://github.com/any-source/lokio"
+download_url="$github_repo/releases/latest/download/lokio-$target.zip"
+exe="$bin_dir/lokio"
 
-# If AVX2 isn't supported, use the -baseline build
-case "$target" in
-'darwin-x64'*)
-    if [[ $(sysctl -a | grep machdep.cpu | grep AVX2) == '' ]]; then
-        target="$target-baseline"
-    fi
-    ;;
-'linux-x64'*)
-    if [[ $(cat /proc/cpuinfo | grep avx2) = '' ]]; then
-        target="$target-baseline"
-    fi
-    ;;
-esac
-
-exe_name=lokio
-
-if [[ $# = 2 && $2 = debug-info ]]; then
-    target=$target-profile
-    exe_name=lokio-profile
-    info "You requested a debug build of lokio."
-fi
-
-if [[ $# = 0 ]]; then
-    lokio_uri=$github_repo/releases/latest/download/lokio-$target.zip
-else
-    lokio_uri=$github_repo/releases/download/$1/lokio-$target.zip
-fi
-
-install_env=LOKIO_INSTALL
-bin_env=\$$install_env/bin
-
-install_dir=${!install_env:-$HOME/.lokio}
-bin_dir=$install_dir/bin
-exe=$bin_dir/lokio
-
-if [[ ! -d $bin_dir ]]; then
-    mkdir -p "$bin_dir" ||
-        error "Failed to create install directory \"$bin_dir\""
-fi
-
-curl --fail --location --progress-bar --output "$exe.zip" "$lokio_uri" ||
-    error "Failed to download lokio from \"$lokio_uri\""
-
-unzip -oqd "$bin_dir" "$exe.zip" ||
-    error 'Failed to extract lokio'
-
-chmod +x "$exe" ||
-    error 'Failed to set permissions on lokio executable'
-
-rm "$exe.zip"
-
-tildify() {
-    if [[ $1 = $HOME/* ]]; then
-        local replacement=\~/
-        echo "${1/$HOME\//$replacement}"
-    else
-        echo "$1"
-    fi
+echo "Lokio downloaded for $target..."
+curl --fail --location --progress-bar --output "$bin_dir/lokio.zip" "$download_url" || {
+    echo "error: Failed to download Lokio"
+    exit 1
 }
 
-success "lokio was installed successfully to $Bold_Green$(tildify "$exe")"
+# Ekstrak file
+cd "$bin_dir"
+unzip -o lokio.zip || {
+    echo "error: Failed to extract lokio.zip"
+    rm -f lokio.zip
+    exit 1
+}
 
-if command -v lokio >/dev/null; then
-    IS_LOKIO_AUTO_UPDATE=true $exe completions &>/dev/null || :
-    echo "Run 'lokio --help' to get started"
-    exit
+# Cari file yang diekstrak dan ubah namanya
+extracted_exe=$(find . -type f -name "lokio-*" -not -name "*.zip")
+if [[ -n "$extracted_exe" ]]; then
+    mv "$extracted_exe" lokio || {
+        echo "error: Failed to change lokio name"
+        exit 1
+    }
+else
+    echo "error: Cannot find Lokio execution files"
+    exit 1
 fi
 
-refresh_command=''
-tilde_bin_dir=$(tildify "$bin_dir")
-quoted_install_dir=\"${install_dir//\"/\\\"}\"
+# Berikan izin eksekusi
+chmod +x lokio || {
+    echo "error: Failed to give permission to execute"
+    exit 1
+}
 
-if [[ $quoted_install_dir = \"$HOME/* ]]; then
-    quoted_install_dir=${quoted_install_dir/$HOME\//\$HOME/}
+# Hapus file zip setelah ekstraksi sukses
+rm -f lokio.zip
+
+# Verifikasi instalasi
+if [[ ! -x "$exe" ]]; then
+    echo "error: Failing installation, file cannot be executed"
+    exit 1
 fi
 
-echo
+# Tentukan file konfigurasi shell
+shell_config="$HOME/.zshrc"
 
-case $(basename "$SHELL") in
-fish)
-    IS_LOKIO_AUTO_UPDATE=true SHELL=fish $exe completions &>/dev/null || :
-
-    commands=(
-        "set --export $install_env $quoted_install_dir"
-        "set --export PATH $bin_env \$PATH"
-    )
-
-    fish_config=$HOME/.config/fish/config.fish
-    tilde_fish_config=$(tildify "$fish_config")
-
-    if [[ -w $fish_config ]]; then
-        {
-            echo -e '\n# lokio'
-            for command in "${commands[@]}"; do
-                echo "$command"
-            done
-        } >>"$fish_config"
-
-        info "Added \"$tilde_bin_dir\" to \$PATH in \"$tilde_fish_config\""
-        refresh_command="source $tilde_fish_config"
-    else
-        echo "Manually add the directory to $tilde_fish_config (or similar):"
-        for command in "${commands[@]}"; do
-            info_bold "  $command"
-        done
-    fi
-    ;;
-zsh)
-    IS_LOKIO_AUTO_UPDATE=true SHELL=zsh $exe completions &>/dev/null || :
-
-    commands=(
-        "export $install_env=$quoted_install_dir"
-        "export PATH=\"$bin_env:\$PATH\""
-    )
-
-    zsh_config=$HOME/.zshrc
-    tilde_zsh_config=$(tildify "$zsh_config")
-
-    if [[ -w $zsh_config ]]; then
-        {
-            echo -e '\n# lokio'
-            for command in "${commands[@]}"; do
-                echo "$command"
-            done
-        } >>"$zsh_config"
-
-        info "Added \"$tilde_bin_dir\" to \$PATH in \"$tilde_zsh_config\""
-        refresh_command="exec $SHELL"
-    else
-        echo "Manually add the directory to $tilde_zsh_config (or similar):"
-        for command in "${commands[@]}"; do
-            info_bold "  $command"
-        done
-    fi
-    ;;
-bash)
-    IS_LOKIO_AUTO_UPDATE=true SHELL=bash $exe completions &>/dev/null || :
-
-    commands=(
-        "export $install_env=$quoted_install_dir"
-        "export PATH=\"$bin_env:\$PATH\""
-    )
-
-    bash_configs=(
-        "$HOME/.bashrc"
-        "$HOME/.bash_profile"
-    )
-
-    if [[ ${XDG_CONFIG_HOME:-} ]]; then
-        bash_configs+=(
-            "$XDG_CONFIG_HOME/.bash_profile"
-            "$XDG_CONFIG_HOME/.bashrc"
-            "$XDG_CONFIG_HOME/bash_profile"
-            "$XDG_CONFIG_HOME/bashrc"
-        )
-    fi
-
-    set_manually=true
-    for bash_config in "${bash_configs[@]}"; do
-        tilde_bash_config=$(tildify "$bash_config")
-
-        if [[ -w $bash_config ]]; then
-            {
-                echo -e '\n# lokio'
-                for command in "${commands[@]}"; do
-                    echo "$command"
-                done
-            } >>"$bash_config"
-
-            info "Added \"$tilde_bin_dir\" to \$PATH in \"$tilde_bash_config\""
-            refresh_command="source $bash_config"
-            set_manually=false
-            break
-        fi
-    done
-
-    if [[ $set_manually = true ]]; then
-        echo "Manually add the directory to $tilde_bash_config (or similar):"
-        for command in "${commands[@]}"; do
-            info_bold "  $command"
-        done
-    fi
-    ;;
-*)
-    echo 'Manually add the directory to ~/.bashrc (or similar):'
-    info_bold "  export $install_env=$quoted_install_dir"
-    info_bold "  export PATH=\"$bin_env:\$PATH\""
-    ;;
-esac
-
-echo
-info "To get started, run:"
-echo
-
-if [[ $refresh_command ]]; then
-    info_bold "  $refresh_command"
+# Tambahkan ke PATH jika belum ada
+if [[ -f "$shell_config" && ! $(grep -qF "export PATH=\"$bin_dir:\$PATH\"" "$shell_config") ]]; then
+    echo -e "\n# Added by the installer lokio" >> "$shell_config"
+    echo "export PATH=\"$bin_dir:\$PATH\"" >> "$shell_config"
+    echo "Lokio has been added to path on $shell_config"
 fi
 
-info_bold "  lokio --help"
+# Terapkan perubahan PATH langsung di sesi saat ini
+export PATH="$bin_dir:$PATH"
+
+# Muat ulang konfigurasi shell dengan aman
+set +u
+if [[ -f "$shell_config" ]]; then
+    source "$shell_config" 2>/dev/null || true
+fi
+set -u
+
+# Cek apakah `lokio` sekarang bisa langsung dijalankan
+if command -v lokio &> /dev/null; then
+    echo "✅ Lokio installation was successful!You can directly use 'lokio'"
+else
+    echo "⚠️ Installation is successful, but Lokio has not been recognized.Try running:"
+    echo "   source $shell_config  (or restart terminal)"
+fi

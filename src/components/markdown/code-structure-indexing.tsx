@@ -12,7 +12,7 @@ interface FolderContent {
 	[key: string]: GitHubItem[];
 }
 
-const CodeStructureLokioExamples = () => {
+const CodeStructureLokioIndexing = () => {
 	const [data, setData] = useState<GitHubItem[] | null>(null);
 	const [error, setError] = useState<string | null>(null);
 	const [loading, setLoading] = useState(true);
@@ -23,7 +23,7 @@ const CodeStructureLokioExamples = () => {
 	const fetchGitHubContent = useCallback(async (path: string) => {
 		try {
 			const response = await fetch(
-				`https://api.github.com/repos/any-source/examples/contents/${path}`,
+				`https://api.github.com/repos/any-source/indexing/contents/${path}`,
 			);
 			if (!response.ok) {
 				throw new Error("Failed to fetch repository data");
@@ -182,4 +182,4 @@ const CodeStructureLokioExamples = () => {
 	);
 };
 
-export default CodeStructureLokioExamples;
+export default CodeStructureLokioIndexing;

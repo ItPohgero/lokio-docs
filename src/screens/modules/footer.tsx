@@ -70,12 +70,13 @@ export function ModuleFooter() {
 					>
 						<h3 className="text-lg font-semibold">Supported</h3>
 						<p className="text-muted-foreground">
-							Thank you for helping to develop
+							Thank you for your support!
 						</p>
 
 						<div className="flex flex-wrap justify-start items-center gap-2">
 							<Image src="/logo/akt.svg" alt="akt" width={70} height={70} />
 							<Image
+								className="dark:invert"
 								src="/logo/mataramandev.svg"
 								alt="mataramandev"
 								width={40}

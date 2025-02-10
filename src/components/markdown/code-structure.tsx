@@ -25,7 +25,7 @@ const CodeStructure = ({
 	const fetchGitHubContent = useCallback(async (path: string) => {
 		try {
 			const response = await fetch(
-				`https://api.github.com/repos/any-source/examples/contents/${path}`,
+				`https://api.github.com/repos/any-source/indexing/contents/${path}`,
 			);
 			if (!response.ok) {
 				throw new Error("Failed to fetch repository data");
