@@ -70,7 +70,7 @@ export function ModuleFooter() {
 					>
 						<h3 className="text-lg font-semibold">Supported</h3>
 						<p className="text-muted-foreground">
-							Thank you for your support!
+							Thanks for your support!
 						</p>
 
 						<div className="flex flex-wrap justify-start items-center gap-2">
