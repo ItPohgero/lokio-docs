@@ -10,7 +10,7 @@ import { ModuleFooter } from "./modules/footer";
 
 export default function ScreenMain() {
 	const [copy, setCopy] = useState<boolean>(false);
-	const [activeTab, setActiveTab] = useState<"mac or linux" | "windows">(
+	const [activeTab, setActiveTab] = useState<"mac or linux" | "windows" | "bun">(
 		"mac or linux",
 	);
 
@@ -30,9 +30,10 @@ export default function ScreenMain() {
 		{ icon: "lineicons:typescript", name: "Typescript" },
 	];
 
-	const installCommands: { [key in "mac or linux" | "windows"]: string } = {
+	const installCommands: { [key in "mac or linux" | "windows" | "bun"]: string } = {
 		"mac or linux": "curl -fsSL lokio.dev/install.sh | bash",
 		windows: 'powershell -c "irm lokio.dev/install.ps1 | iex"',
+		bun: 'bun add -g lokio',
 	};
 
 	const handleCopy = () => {
