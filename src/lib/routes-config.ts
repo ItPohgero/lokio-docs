@@ -67,29 +67,6 @@ export const ROUTES: EachRoute[] = [
 					},
 				],
 			},
-			{
-				title: "Make",
-				href: "/make",
-				noLink: true,
-				items: [
-					{ title: "Make Screen", href: "/make-screen" },
-					{ title: "Make Hook", href: "/make-hook" },
-					{ title: "Make Layout", href: "/make-layout" },
-					{ title: "Make Controller", href: "/make-controller" },
-					{ title: "Make Schema", href: "/make-schema" },
-					{ title: "Make Component", href: "/make-component" },
-					{ title: "Make Call", href: "/make-call" },
-				],
-			},
-			{
-				title: "Generate",
-				href: "/generate",
-				noLink: true,
-				items: [
-					{ title: "Generate Component", href: "/gen-component" },
-					{ title: "Generate Hook", href: "/gen-hook" },
-				],
-			},
 		],
 	},
 	{
