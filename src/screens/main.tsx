@@ -2,11 +2,12 @@
 import { Icon } from "@iconify/react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ModuleCallToAction } from "./modules/call-to-action";
 import ModuleContributors from "./modules/contributor";
 import { ModuleFeatures } from "./modules/features";
 import { ModuleFooter } from "./modules/footer";
+import YAML from "yaml";
 
 export default function ScreenMain() {
 	const [copy, setCopy] = useState<boolean>(false);
@@ -44,6 +45,19 @@ export default function ScreenMain() {
 		}, 2000);
 	};
 
+	const [version, setVersion] = useState<string>("");
+	useEffect(() => {
+		const path = "https://raw.githubusercontent.com/any-source/lokio-core/main/cli/version.yaml";
+		fetch(path, { cache: "no-store" })
+			.then((res) => res.text())
+			.then((text) => {
+				const version = YAML.parse(text);
+				setVersion(`v${version.major}.${version.minor}.${version.patch}`);
+			})
+			.catch((error) => {
+				console.error('Error fetching version:', error);
+			});
+	}, []);
 	return (
 		<div className="min-h-screen">
 			<div className="container mx-auto pt-32 px-0">
@@ -84,6 +98,7 @@ export default function ScreenMain() {
 								Lokio is an Assistant CLI that helps create more structured,
 								fast, and efficient projects.
 							</p>
+							<p className="font-bold text-orange-500">Latest {version}</p>
 						</div>
 
 						<div className="flex flex-col space-y-4">
