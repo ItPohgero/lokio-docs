@@ -89,6 +89,7 @@ const components = {
 	CodeStructureLokio,
 	CodeStructureLokioDocs,
 	CodeStructureLokioIndexing,
+	GitHubExplorer
 };
 
 // can be used for other pages like blogs, Guides etc
@@ -226,6 +227,7 @@ import CodeStructureLokioDocs from "@/components/markdown/code-structure-docs";
 import CodeStructureLokio from "@/components/markdown/code-structure-lokio";
 import type { Node } from "unist";
 import CodeStructureLokioIndexing from "@/components/markdown/code-structure-indexing";
+import GitHubExplorer from "@/components/markdown/github-explore";
 
 const preProcess = () => (tree: Node) => {
 	visit(tree, (node) => {
