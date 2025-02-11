@@ -32,8 +32,11 @@ export const ROUTES: EachRoute[] = [
 						href: "/frontend",
 						noLink: true,
 						items: [
-							{ title: "Next", href: "/next" },
+							{ title: "Angular", href: "/angular" },
 							{ title: "Astro", href: "/astro" },
+							{ title: "Next", href: "/next" },
+							{ title: "Nuxt", href: "/nuxt" },
+							{ title: "Vue", href: "/vue" },
 						]
 					},
 					{
