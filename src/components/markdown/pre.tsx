@@ -17,7 +17,7 @@ const Pre = ({
 		.join("\n");
 
 	return (
-		<div className="relative group">
+		<div className="relative group mt-4">
 			<div className="absolute top-0 right-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200 sm:block hidden">
 				{raw && <Copy content={raw} />}
 			</div>
@@ -28,7 +28,7 @@ const Pre = ({
 					<div className="w-2.5 h-2.5 rounded-full bg-yellow-500" />
 					<div className="w-2.5 h-2.5 rounded-full bg-green-500" />
 				</div>
-				<div className="bg-secondary/50 px-4 pb-4 pt-12">
+				<div className="bg-secondary/50 px-4 pb-4 pt-6">
 					<SyntaxHighlighter
 						language={language}
 						style={{
@@ -63,7 +63,7 @@ const Pre = ({
 							paddingRight: "1rem", // Tambahkan padding kanan
 						}}
 					>
-						{cleanRaw || ""}
+						{`\n${cleanRaw}`}
 					</SyntaxHighlighter>
 				</div>
 			</div>

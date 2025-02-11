@@ -20,15 +20,48 @@ export const ROUTES: EachRoute[] = [
 			},
 			{
 				title: "Create",
-				href: "/create-new-project",
+				href: "/create",
+			},
+			{
+				title: "Structure",
+				href: "/structure",
 				noLink: true,
 				items: [
-					{ title: "Create Next Monolith", href: "/fs-next" },
-					{ title: "Create Next Frontend", href: "/fe-next" },
-					{ title: "Create Elysia", href: "/be-elysia" },
-					{ title: "Create Golang", href: "/be-golang" },
-					{ title: "Create Astro", href: "/fe-astro" },
-					{ title: "Create Kotlin MVVM", href: "/kt-mobile-mvvm" },
+					{
+						title: "Frontend",
+						href: "/frontend",
+						noLink: true,
+						items: [
+							{ title: "Next", href: "/next" },
+							{ title: "Astro", href: "/astro" },
+						]
+					},
+					{
+						title: "Backend",
+						href: "/backend",
+						noLink: true,
+						items: [
+							{ title: "Elysia", href: "/elysia" },
+							{ title: "Golang", href: "/golang" },
+							{ title: "Hono", href: "/hono" },
+						]
+					},
+					{
+						title: "Mobile",
+						href: "/mobile",
+						noLink: true,
+						items: [
+							{ title: "Kotlin MVVM", href: "/kotlin-mvvm" },
+						]
+					},
+					{
+						title: "Monolith",
+						href: "/monolith",
+						noLink: true,
+						items: [
+							{ title: "Next", href: "/next" },
+						]
+					},
 				],
 			},
 			{
