@@ -23,7 +23,7 @@ const CodeStructureLokioIndexing = () => {
 	const fetchGitHubContent = useCallback(async (path: string) => {
 		try {
 			const response = await fetch(
-				`https://api.github.com/repos/any-source/indexing/contents/${path}`,
+				`https://api.github.com/repos/any-source/lokio-core/contents/${path}`,
 			);
 			if (!response.ok) {
 				throw new Error("Failed to fetch repository data");
