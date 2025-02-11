@@ -21,6 +21,9 @@ import { CustomTable, CustomTableRow } from "@/components/markdown/table";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { Element as HastElement, Root } from "hast";
 
+import type { Node } from "unist";
+import GitHubExplorer from "@/components/markdown/github-explore";
+
 interface Element extends HastElement {
 	raw?: string;
 }
@@ -85,10 +88,6 @@ const components = {
 	ContributorProfile,
 	table: CustomTable,
 	tr: CustomTableRow,
-	CodeStructure,
-	CodeStructureLokio,
-	CodeStructureLokioDocs,
-	CodeStructureLokioIndexing,
 	GitHubExplorer
 };
 
@@ -221,13 +220,6 @@ export async function getAllChilds(pathString: string) {
 		}),
 	);
 }
-
-import CodeStructure from "@/components/markdown/code-structure";
-import CodeStructureLokioDocs from "@/components/markdown/code-structure-docs";
-import CodeStructureLokio from "@/components/markdown/code-structure-lokio";
-import type { Node } from "unist";
-import CodeStructureLokioIndexing from "@/components/markdown/code-structure-indexing";
-import GitHubExplorer from "@/components/markdown/github-explore";
 
 const preProcess = () => (tree: Node) => {
 	visit(tree, (node) => {
