@@ -8,25 +8,28 @@ Install lokio Assistant and we will speed up the structured development process.
 To start lokio, you must install it 
 <Stepper>
   <StepperItem title="Step 1: Installing Lokio Assistant">
-    <Tabs defaultValue="mac" className="pt-5 pb-1">
+    <Tabs defaultValue="mac-linux" className="pt-5 pb-1">
       <TabsList>
-        <TabsTrigger value="mac">Mac (arm64)</TabsTrigger>
-        <TabsTrigger value="linux">Linux</TabsTrigger>
-        <TabsTrigger value="windows">Windows (x64)</TabsTrigger>
+        <TabsTrigger value="mac-linux">Mac Linux</TabsTrigger>
+        <TabsTrigger value="windows">Windows</TabsTrigger>
+        <TabsTrigger value="bun">Bun</TabsTrigger>
       </TabsList>
-      <TabsContent value="mac">
+      <TabsContent value="mac-linux">
         ```bash
-        curl -fsSL https://lokio.dev/in/mac.sh | bash
-        ```
-      </TabsContent>
-      <TabsContent value="linux">
-        ```bash
-        curl -fsSL https://lokio.dev/in/linux.sh | bash
+        curl -fsSL lokio.dev/install.sh | bash
         ```
       </TabsContent>
       <TabsContent value="windows">
         ```bash
-        powershell -c "irm https://lokio.dev/in/win.ps1 | iex"
+        powershell -c "irm lokio.dev/install.ps1 | iex"
+        ```
+      </TabsContent>
+      <TabsContent value="bun">
+        ```bash
+        // Install bun
+        Link : https://bun.sh
+        // Add package to global bun package
+        bun add -g lokio
         ```
       </TabsContent>
     </Tabs>
@@ -39,9 +42,9 @@ To start lokio, you must install it
   
 
   <StepperItem title="Step 2: Lokio Usage">
-    You can take advantage of the lokio-cli features with the following command:
+    You can take advantage of the lokio features with the following command:
     <Note title="Remember">
-      If we have the last directory, then lokio-Cli has only 2 commands init and creation.
+      If we have the last directory, then lokio has only 2 commands init and creation.
     </Note>
   </StepperItem>
 </Stepper>
