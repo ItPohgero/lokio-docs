@@ -73,14 +73,32 @@ fi
 # Tentukan file konfigurasi shell
 shell_config="$HOME/.zshrc"
 
-# Tambahkan ke PATH jika belum ada
-if [[ -f "$shell_config" && ! $(grep -qF "export PATH=\"$bin_dir:\$PATH\"" "$shell_config") ]]; then
-    echo -e "\n# Added by the installer lokio" >> "$shell_config"
-    echo "export PATH=\"$bin_dir:\$PATH\"" >> "$shell_config"
-    echo "Lokio has been added to path on $shell_config"
+# Fungsi untuk mengecek apakah PATH sudah ada di file konfigurasi
+check_path_exists() {
+    local config_file="$1"
+    local path_to_check="$2"
+    
+    if [[ -f "$config_file" ]]; then
+        # Cek apakah PATH sudah ada
+        if grep -q "export PATH=\"$path_to_check:\$PATH\"" "$config_file"; then
+            return 0  # Path sudah ada
+        fi
+    fi
+    return 1  # Path belum ada
+}
+
+# Cek dan tambahkan PATH hanya jika belum ada
+if [[ -f "$shell_config" ]]; then
+    if ! check_path_exists "$shell_config" "$bin_dir"; then
+        echo -e "\n# Added by the installer lokio" >> "$shell_config"
+        echo "export PATH=\"$bin_dir:\$PATH\"" >> "$shell_config"
+        echo "Lokio has been added to path on $shell_config"
+    else
+        echo "Lokio PATH already exists in $shell_config, skipping..."
+    fi
 fi
 
-# Terapkan perubahan PATH langsung di sesi saat ini
+# Terapkan perubahan PATH untuk sesi saat ini
 export PATH="$bin_dir:$PATH"
 
 # Muat ulang konfigurasi shell dengan aman
