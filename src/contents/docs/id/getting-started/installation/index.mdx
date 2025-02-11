@@ -3,101 +3,52 @@ title: Instal
 description: Panduan instalasi untuk aplikasi kami.
 ---
 
-Instal lokio Cli dan kami akan mempercepat proses pengembangan terstruktur.
-## Instalasi secara global
-Untuk memulai lokio-Cli, Anda harus menginstalnya secara lokal atau global (rekomendasi), dapat dengan NPM, PMPM, Benang atau Bun (Rekomendasi).
-<Stepper>
-  <StepperItem title="Langkah 1: Instal Bun Jika Anda Belum (Disarankan)">
-    <Tabs defaultValue="mac-linux" className="pt-5 pb-1">
-      <TabsList>
-        <TabsTrigger value="mac-linux">Mac /  Linux</TabsTrigger>
-        <TabsTrigger value="windows">Windows</TabsTrigger>
-      </TabsList>
-      <TabsContent value="mac-linux">
-        ```
-        curl -fsSL https://bun.sh/install | bash
-        ```
-      </TabsContent>
-      <TabsContent value="windows">
-        ```
-        powershell -c "irm bun.sh/install.ps1 | iex"
-        ```
-      </TabsContent>
-    </Tabs>
-    Periksa versi BUN Anda untuk memastikannya diinstal dengan benar:
-    ```
-    bun --version
-    ```
+Lokio Assistant akan mempercepat proses pengembangan terstruktur Anda. Panduan ini akan membantu Anda memasang Lokio di sistem Anda.
 
-  </StepperItem>
-  
+## Persyaratan Sistem
 
-  <StepperItem title="Langkah 2: Instal lokio Cli secara global">
-    Setelah menginstal BUN, Anda dapat menginstal lokio Cli secara global dengan perintah berikut:
-    <Tabs defaultValue="bun" className="pt-5 pb-1">
-      <TabsList>
-        <TabsTrigger value="bun">Bun</TabsTrigger>
-        <TabsTrigger value="npm">Npm</TabsTrigger>
-        <TabsTrigger value="yarn">yarn</TabsTrigger>
-        <TabsTrigger value="pnpm">pnpm</TabsTrigger>
-      </TabsList>
-      <TabsContent value="bun">
-        ```
-        bun add -g lokio-cli
-        ```
-      </TabsContent>
-      <TabsContent value="npm">
-        ```
-        npm install -g lokio-cli
-        ```
-      </TabsContent>
-      <TabsContent value="yarn">
-        ```
-        yarn global add lokio-cli
-        ```
-      </TabsContent>
-      <TabsContent value="pnpm">
-        ```
-        pnpm add -g lokio-cli
-        ```
-      </TabsContent>
-    </Tabs>
-    Periksa versi lokio CLI Anda untuk memastikannya diinstal dengan benar:
-    ```
-    lokio --version
-    lokio -v
-    ```
-  </StepperItem>
+Sebelum instalasi, pastikan sistem Anda memenuhi persyaratan berikut:
+- Koneksi internet untuk mengunduh paket instalasi
+- Terminal atau Command Prompt
+- Curl (untuk Mac/Linux) atau PowerShell (untuk Windows)
 
-  <StepperItem title="Step 3: lokio CLI Usage">
-    Anda dapat memanfaatkan fitur lokio-cli dengan perintah berikut:
-    <Note title="Remember">
-      Jika kita memiliki direktori terakhir, maka lokio-Cli hanya memiliki 2 perintah init dan create.
-    </Note>
-    
-    Buat proyek baru dengan perintah berikut:
-    ```
-    lokio create <project-name>
-    -------------
-    Would you like to install a starter kit? (Use arrow keys)
-    - [FS]-Next
-    - [FE]-Next
-    - [FE]-Angular
-    - [FE]-Nuxt
-    - [BE]-Hono
-    ```
-    Initialize an existing project with the following command:
-    ```
-    lokio init
-    -------------
-    Select your project base framework? (Use arrow keys)
-    - [FS]-Next
-    - [FE]-Next
-    - [FE]-Angular
-    - [FE]-Nuxt
-    - [BE]-Hono
-    ```
+## Langkah-langkah Instalasi
 
-    Sistem akan membuat file baru **. lokio.yaml **, ini adalah file konfigurasi standar untuk lokio-cli.
-  </StepperItem>
-</Stepper>
+### 1. Memasang Lokio Assistant
+
+Pilih metode instalasi sesuai dengan sistem operasi Anda:
+
+#### Untuk Mac/Linux
+```bash
+curl -fsSL lokio.dev/install.sh | bash
+```
+
+#### Untuk Windows
+```bash
+powershell -c "irm lokio.dev/install.ps1 | iex"
+```
+
+#### Menggunakan Bun
+Jika Anda lebih suka menggunakan Bun:
+
+1. Pasang Bun terlebih dahulu (kunjungi https://bun.sh untuk instruksi)
+2. Pasang Lokio secara global menggunakan Bun:
+```bash
+bun add -g lokio
+```
+
+### 2. Verifikasi Instalasi
+
+Setelah instalasi selesai, verifikasi bahwa Lokio terpasang dengan benar:
+```bash
+lokio --version
+# atau
+lokio -v
+```
+
+## Penyelesaian Masalah
+
+Jika Anda mengalami masalah selama instalasi:
+1. Pastikan Anda memiliki koneksi internet yang stabil
+2. Periksa bahwa Anda memiliki izin yang tepat untuk instalasi
+3. Pastikan curl (Mac/Linux) atau PowerShell (Windows) terinstal dengan benar

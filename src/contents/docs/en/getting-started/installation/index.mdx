@@ -3,48 +3,52 @@ title: Installation
 description: Installation guide for our application.
 ---
 
-Install lokio Assistant and we will speed up the structured development process.
-## Installation
-To start lokio, you must install it 
-<Stepper>
-  <StepperItem title="Step 1: Installing Lokio Assistant">
-    <Tabs defaultValue="mac-linux" className="pt-5 pb-1">
-      <TabsList>
-        <TabsTrigger value="mac-linux">Mac Linux</TabsTrigger>
-        <TabsTrigger value="windows">Windows</TabsTrigger>
-        <TabsTrigger value="bun">Bun</TabsTrigger>
-      </TabsList>
-      <TabsContent value="mac-linux">
-        ```bash
-        curl -fsSL lokio.dev/install.sh | bash
-        ```
-      </TabsContent>
-      <TabsContent value="windows">
-        ```bash
-        powershell -c "irm lokio.dev/install.ps1 | iex"
-        ```
-      </TabsContent>
-      <TabsContent value="bun">
-        ```bash
-        // Install bun
-        Link : https://bun.sh
-        // Add package to global bun package
-        bun add -g lokio
-        ```
-      </TabsContent>
-    </Tabs>
-    Check your lokio version:
-    ```bash
-    lokio --version or lokio -v
-    ```
+Lokio Assistant will accelerate your structured development process. This guide will help you install Lokio on your system.
 
-  </StepperItem>
-  
+## System Requirements
 
-  <StepperItem title="Step 2: Lokio Usage">
-    You can take advantage of the lokio features with the following command:
-    <Note title="Remember">
-      If we have the last directory, then lokio has only 2 commands init and creation.
-    </Note>
-  </StepperItem>
-</Stepper>
+Before installation, ensure your system meets the following requirements:
+- Internet connection for downloading installation packages
+- Terminal or Command Prompt
+- Curl (for Mac/Linux) or PowerShell (for Windows)
+
+## Installation Steps
+
+### 1. Installing Lokio Assistant
+
+Choose the installation method according to your operating system:
+
+#### For Mac/Linux
+```bash
+curl -fsSL lokio.dev/install.sh | bash
+```
+
+#### For Windows
+```bash
+powershell -c "irm lokio.dev/install.ps1 | iex"
+```
+
+#### Using Bun
+If you prefer using Bun:
+
+1. Install Bun first (visit https://bun.sh for instructions)
+2. Install Lokio globally using Bun:
+```bash
+bun add -g lokio
+```
+
+### 2. Verify Installation
+
+After installation, verify that Lokio is installed correctly:
+```bash
+lokio --version
+# or
+lokio -v
+```
+
+## Troubleshooting
+
+If you encounter issues during installation:
+1. Ensure you have a stable internet connection
+2. Check that you have the proper permissions for installation
+3. Verify that curl (Mac/Linux) or PowerShell (Windows) is properly installed
